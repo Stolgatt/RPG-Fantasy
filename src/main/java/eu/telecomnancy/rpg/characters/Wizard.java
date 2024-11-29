@@ -1,4 +1,4 @@
-package eu.telecomnancy.rpg;
+package eu.telecomnancy.rpg.characters;
 
 import java.util.Random;
 
@@ -10,6 +10,7 @@ public class Wizard extends GameCharacter {
     public Wizard(String name) {
         super(name);
         intelligence = getLevel() * 10+new Random().nextInt(10);
+        this.setHealth(150);
     }
 
     public int getIntelligence() {

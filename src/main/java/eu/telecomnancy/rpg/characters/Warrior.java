@@ -1,4 +1,4 @@
-package eu.telecomnancy.rpg;
+package eu.telecomnancy.rpg.characters;
 
 import java.util.Random;
 
@@ -8,6 +8,7 @@ public class Warrior extends GameCharacter {
     public Warrior(String name) {
         super(name);
         strength = getLevel() * 10+new Random().nextInt(10);
+        this.setHealth(200);
     }
 
     public int getStrength() {
