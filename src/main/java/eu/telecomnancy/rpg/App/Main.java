@@ -1,9 +1,6 @@
 package eu.telecomnancy.rpg.App;
 
-import eu.telecomnancy.rpg.characters.CharacterRegistry;
-import eu.telecomnancy.rpg.characters.Healer;
-import eu.telecomnancy.rpg.characters.Warrior;
-import eu.telecomnancy.rpg.characters.Wizard;
+import eu.telecomnancy.rpg.characters.*;
 
 import java.lang.System;
 
@@ -24,6 +21,16 @@ public class Main {
         clonedWarrior.setName("Cloned Warrior");
         clonedWarrior.setStrength(80);
 
+        //Création d'une équipe avec le TeamBuilder
         System.out.println(clonedWarrior);
+
+        Team team = new TeamBuilder("Dream Team")
+                .addPlayer(new Warrior("Conan"))
+                .addPlayer(new Wizard("Gandalf"))
+                .addPlayer(new Healer("Florence"))
+                .build();
+
+        System.out.println("Team created: " + team.getName());
+        System.out.println("Team size: " + team.size());
     }
 }

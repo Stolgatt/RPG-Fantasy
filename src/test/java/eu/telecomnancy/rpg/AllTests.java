@@ -14,7 +14,8 @@ import org.junit.platform.suite.api.Suite;
         CharacterTest.class,
         GameConfigurationTest.class,
         CharacterRegistryTest.class,
-        TeamRegistryTest.class
+        TeamRegistryTest.class,
+        TeamBuilderTest.class,
 })
 public class AllTests {
 }
