@@ -11,6 +11,18 @@ public class Healer extends GameCharacter {
         this.setHealth(100);
     }
 
+    private Healer(Healer source) {
+        super(source.getName());
+        this.wisdom = source.wisdom;
+        this.setHealth(source.getHealth());
+        this.setLevel(source.getLevel());
+    }
+
+    @Override
+    public Healer clone() {
+        return new Healer(this);
+    }
+
     public int getWisdom() {
         return wisdom;
     }

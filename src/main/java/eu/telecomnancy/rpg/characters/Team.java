@@ -3,26 +3,44 @@ package eu.telecomnancy.rpg.characters;
 import java.util.ArrayList;
 import java.util.Collection;
 
+public class Team implements Prototype{
 
-
-public class Team {
-
-    private final String name;
-
+    private String name;
     private Collection<GameCharacter> players;
 
+
+    //Constructeur & Clone
     public Team(String name) {
         this.name = name;
         players=new ArrayList<GameCharacter>();
     }
 
+    private Team(Team source) {
+        this.name = source.name;
+        this.players = new ArrayList<>();
+        for (GameCharacter player : source.players) {
+            this.players.add(player.clone());
+        }
+    }
+
+    public Team clone(){
+        return new Team(this);
+    }
+
+
+    //Getter et setter
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
     
     public Collection<GameCharacter> getPlayers() {
         return players;
     }
+
     public void addPlayer(GameCharacter player) {
         players.add(player);
     }
@@ -65,4 +83,5 @@ public class Team {
     public int size() {
         return players.size();
     }
+
 }

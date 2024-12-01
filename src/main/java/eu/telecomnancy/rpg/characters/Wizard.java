@@ -13,6 +13,18 @@ public class Wizard extends GameCharacter {
         this.setHealth(150);
     }
 
+    private Wizard(Wizard source) {
+        super(source.getName());
+        this.intelligence = source.getIntelligence();
+        this.setHealth(source.getHealth());
+        this.setLevel(source.getLevel());
+    }
+
+    @Override
+    public Wizard clone() {
+        return new Wizard(this);
+    }
+
     public int getIntelligence() {
         return intelligence;
     }

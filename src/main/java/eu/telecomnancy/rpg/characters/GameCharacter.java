@@ -1,10 +1,11 @@
 package eu.telecomnancy.rpg.characters;
 
 
+import java.util.Objects;
 
-public abstract class GameCharacter {
+public abstract class GameCharacter implements Prototype{
 
-    private final String name;
+    private String name;
     private int health;
     private int experiencePoints;
     private int level;
@@ -16,9 +17,14 @@ public abstract class GameCharacter {
         this.level = 1;
     }
 
+    public abstract GameCharacter clone();
     
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getHealth() {
@@ -48,5 +54,22 @@ public abstract class GameCharacter {
     public String toString() {
         return name + " (Level " + level + ") with " + health + " HP and " + experiencePoints + " XP";
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameCharacter that = (GameCharacter) o;
+        return health == that.health &&
+                experiencePoints == that.experiencePoints &&
+                level == that.level &&
+                name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, health, experiencePoints, level);
+    }
+
+
 }

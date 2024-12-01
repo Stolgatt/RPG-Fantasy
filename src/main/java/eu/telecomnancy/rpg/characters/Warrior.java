@@ -11,6 +11,18 @@ public class Warrior extends GameCharacter {
         this.setHealth(200);
     }
 
+    private Warrior(Warrior source){
+        super(source.getName());
+        this.strength = source.getStrength();
+        this.setHealth(source.getHealth());
+        this.setLevel(source.getLevel());
+    }
+
+    @Override
+    public Warrior clone(){
+        return new Warrior(this);
+    }
+
     public int getStrength() {
         return strength;
     }
