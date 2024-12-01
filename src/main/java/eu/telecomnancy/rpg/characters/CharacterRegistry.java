@@ -13,7 +13,7 @@ public class CharacterRegistry {
     public GameCharacter createClone(String key) {
         GameCharacter prototype = prototypes.get(key);
         if (prototype == null) {
-            throw new IllegalArgumentException("Prototype not found for key: " + key);
+            throw new IllegalArgumentException("Character not found for key: " + key);
         }
         return prototype.clone();
     }
