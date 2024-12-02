@@ -2,7 +2,7 @@
 package eu.telecomnancy.rpg.Controller;
 
 import eu.telecomnancy.rpg.characters.GameCharacter;
-import eu.telecomnancy.rpg.characters.Team;
+import eu.telecomnancy.rpg.characters.team.Team;
 
 import java.util.HashMap;
 

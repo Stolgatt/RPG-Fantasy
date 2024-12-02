@@ -1,6 +1,7 @@
 package eu.telecomnancy.rpg;
 
 import eu.telecomnancy.rpg.characters.*;
+import eu.telecomnancy.rpg.characters.team.Team;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

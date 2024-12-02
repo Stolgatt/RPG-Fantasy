@@ -1,4 +1,6 @@
-package eu.telecomnancy.rpg.characters;
+package eu.telecomnancy.rpg.characters.team;
+
+import eu.telecomnancy.rpg.characters.GameCharacter;
 
 public class TeamBuilder {
     private Team team;

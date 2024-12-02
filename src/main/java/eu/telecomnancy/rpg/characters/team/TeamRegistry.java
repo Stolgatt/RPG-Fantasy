@@ -1,4 +1,4 @@
-package eu.telecomnancy.rpg.characters;
+package eu.telecomnancy.rpg.characters.team;
 
 import java.util.HashMap;
 import java.util.Map;

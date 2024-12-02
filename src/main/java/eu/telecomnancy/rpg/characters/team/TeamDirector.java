@@ -1,4 +1,8 @@
-package eu.telecomnancy.rpg.characters;
+package eu.telecomnancy.rpg.characters.team;
+
+import eu.telecomnancy.rpg.characters.Healer;
+import eu.telecomnancy.rpg.characters.Warrior;
+import eu.telecomnancy.rpg.characters.Wizard;
 
 public class TeamDirector {
 

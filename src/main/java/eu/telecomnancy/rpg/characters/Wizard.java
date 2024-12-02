@@ -1,5 +1,7 @@
 package eu.telecomnancy.rpg.characters;
 
+import eu.telecomnancy.rpg.characters.visitors.Visitor;
+
 import java.util.Random;
 
 
@@ -23,6 +25,11 @@ public class Wizard extends GameCharacter {
     @Override
     public Wizard clone() {
         return new Wizard(this);
+    }
+
+    @Override
+    public void accept(Visitor visitor){
+        visitor.visitWizard(this);
     }
 
     public int getIntelligence() {

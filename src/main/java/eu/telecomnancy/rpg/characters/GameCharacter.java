@@ -1,9 +1,11 @@
 package eu.telecomnancy.rpg.characters;
 
 
+import eu.telecomnancy.rpg.characters.visitors.Visitor;
+
 import java.util.Objects;
 
-public abstract class GameCharacter implements Prototype{
+public abstract class GameCharacter implements Prototype, Visitable {
 
     private String name;
     private int health;
@@ -18,7 +20,10 @@ public abstract class GameCharacter implements Prototype{
     }
 
     public abstract GameCharacter clone();
-    
+
+    public abstract void accept(Visitor visitor);
+
+    //Getter & Setter
     public String getName() {
         return name;
     }

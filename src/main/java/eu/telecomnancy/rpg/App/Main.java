@@ -1,6 +1,8 @@
 package eu.telecomnancy.rpg.App;
 
 import eu.telecomnancy.rpg.characters.*;
+import eu.telecomnancy.rpg.characters.team.Team;
+import eu.telecomnancy.rpg.characters.team.TeamBuilder;
 
 import java.lang.System;
 

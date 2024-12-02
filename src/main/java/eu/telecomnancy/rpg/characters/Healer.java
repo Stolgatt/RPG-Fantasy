@@ -1,5 +1,7 @@
 package eu.telecomnancy.rpg.characters;
 
+import eu.telecomnancy.rpg.characters.visitors.Visitor;
+
 import java.util.Random;
 
 public class Healer extends GameCharacter {
@@ -21,6 +23,11 @@ public class Healer extends GameCharacter {
     @Override
     public Healer clone() {
         return new Healer(this);
+    }
+
+    @Override
+    public void accept(Visitor visitor){
+        visitor.visitHealer(this);
     }
 
     public int getWisdom() {

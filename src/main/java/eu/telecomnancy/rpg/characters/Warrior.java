@@ -1,5 +1,7 @@
 package eu.telecomnancy.rpg.characters;
 
+import eu.telecomnancy.rpg.characters.visitors.Visitor;
+
 import java.util.Random;
 
 public class Warrior extends GameCharacter {
@@ -22,6 +24,12 @@ public class Warrior extends GameCharacter {
     public Warrior clone(){
         return new Warrior(this);
     }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitWarrior(this);
+    }
+
 
     public int getStrength() {
         return strength;

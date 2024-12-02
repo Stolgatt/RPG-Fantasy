@@ -1,9 +1,12 @@
-package eu.telecomnancy.rpg.characters;
+package eu.telecomnancy.rpg.characters.team;
+
+import eu.telecomnancy.rpg.characters.GameCharacter;
+import eu.telecomnancy.rpg.characters.Prototype;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Team implements Prototype{
+public class Team implements Prototype {
 
     private String name;
     private Collection<GameCharacter> players;
