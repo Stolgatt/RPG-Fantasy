@@ -1,6 +1,7 @@
 package eu.telecomnancy.rpg.characters;
 
 
+import eu.telecomnancy.rpg.characters.strategy.CombatStrategy;
 import eu.telecomnancy.rpg.characters.visitors.Visitor;
 
 import java.util.Objects;
@@ -11,6 +12,8 @@ public abstract class GameCharacter implements Prototype, Visitable {
     private int health;
     private int experiencePoints;
     private int level;
+
+    private CombatStrategy strategy;
 
 
     public GameCharacter(String name) {
@@ -55,6 +58,26 @@ public abstract class GameCharacter implements Prototype, Visitable {
     public void setLevel(int level) {
         this.level = level;
     }
+
+    public void setCombatStrategy(CombatStrategy strategy) {
+        if (strategy == null) {
+            throw new IllegalArgumentException("Combat strategy cannot be null");
+        }
+        this.strategy = strategy;
+    }
+
+    public CombatStrategy getCombatStrategy() {
+        return strategy;
+    }
+
+    public double calculateDealDamage(double baseDamage) {
+        return strategy.calculateDamageDealt(baseDamage);
+    }
+
+    public double calculateTakeDamage(double baseDamage) {
+        return strategy.calculateDamageReceived(baseDamage);
+    }
+
 
     public String toString() {
         return name + " (Level " + level + ") with " + health + " HP and " + experiencePoints + " XP";

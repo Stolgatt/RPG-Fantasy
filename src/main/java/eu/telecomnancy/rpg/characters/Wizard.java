@@ -1,5 +1,6 @@
 package eu.telecomnancy.rpg.characters;
 
+import eu.telecomnancy.rpg.characters.strategy.NeutralStrategy;
 import eu.telecomnancy.rpg.characters.visitors.Visitor;
 
 import java.util.Random;
@@ -13,6 +14,7 @@ public class Wizard extends GameCharacter {
         super(name);
         intelligence = getLevel() * 10+new Random().nextInt(10);
         this.setHealth(150);
+        this.setCombatStrategy(new NeutralStrategy());
     }
 
     private Wizard(Wizard source) {
@@ -20,6 +22,7 @@ public class Wizard extends GameCharacter {
         this.intelligence = source.getIntelligence();
         this.setHealth(source.getHealth());
         this.setLevel(source.getLevel());
+        this.setCombatStrategy(new NeutralStrategy()); //Le clone commencera avec une stratégie Neutre initialement
     }
 
     @Override

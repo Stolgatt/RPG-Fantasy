@@ -3,9 +3,9 @@ package eu.telecomnancy.rpg;
 public class GameConfiguration {
     private static GameConfiguration instance;
 
-    private int level;
-    private final int maxLevel = 3;
-    private final int minLevel = 1;
+    private int difficulty;
+    private final int maxDifficulty = 3;
+    private final int minDifficulty = 1;
     private int maxSizeTeam;
 
     //Builder
@@ -19,12 +19,12 @@ public class GameConfiguration {
     }
 
     //Setter
-    public void setLevel(int level) {
-        if (level <= this.maxLevel && level >= this.minLevel) {
-            this.level = level;
+    public void setDifficulty(int difficulty) {
+        if (difficulty <= this.maxDifficulty && difficulty >= this.minDifficulty) {
+            this.difficulty = difficulty;
         }
        else {
-        System.err.println("Erreur : Niveau " + level + " hors des limites (" + this.minLevel + "-" + this.maxLevel + ")");
+        System.err.println("Erreur : Niveau " + difficulty + " hors des limites (" + this.minDifficulty + "-" + this.maxDifficulty + ")");
        }
     }
     public void setMaxSizeTeam(int maxSizeTeam) {
@@ -32,8 +32,8 @@ public class GameConfiguration {
     }
 
     //Getter
-    public int getLevel() {
-        return this.level;
+    public int getDifficulty() {
+        return this.difficulty;
     }
     public int getMaxSizeTeam() {
         return this.maxSizeTeam;

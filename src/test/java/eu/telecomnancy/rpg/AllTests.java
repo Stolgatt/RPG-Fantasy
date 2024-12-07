@@ -19,6 +19,7 @@ import org.junit.platform.suite.api.Suite;
         BuffVisitorTest.class,
         DamageVisitorTest.class,
         HealVisitorTest.class,
+        CombatStrategyTest.class,
 })
 public class AllTests {
 }

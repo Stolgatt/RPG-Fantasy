@@ -1,5 +1,6 @@
 package eu.telecomnancy.rpg.characters;
 
+import eu.telecomnancy.rpg.characters.strategy.NeutralStrategy;
 import eu.telecomnancy.rpg.characters.visitors.Visitor;
 
 import java.util.Random;
@@ -11,6 +12,7 @@ public class Warrior extends GameCharacter {
         super(name);
         strength = getLevel() * 10+new Random().nextInt(10);
         this.setHealth(200);
+        this.setCombatStrategy(new NeutralStrategy());
     }
 
     private Warrior(Warrior source){
@@ -18,6 +20,7 @@ public class Warrior extends GameCharacter {
         this.strength = source.getStrength();
         this.setHealth(source.getHealth());
         this.setLevel(source.getLevel());
+        this.setCombatStrategy(new NeutralStrategy()); //Le clone commencera avec une stratégie Neutre initialement
     }
 
     @Override

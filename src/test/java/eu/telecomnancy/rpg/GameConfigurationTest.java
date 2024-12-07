@@ -16,20 +16,20 @@ public class GameConfigurationTest {
     @Test
     public void testSetAndGetLevelWithinLimits() {
         GameConfiguration config = GameConfiguration.getGameConfiguration();
-        config.setLevel(2);
+        config.setDifficulty(2);
 
-        assertEquals(2, config.getLevel());
+        assertEquals(2, config.getDifficulty());
     }
 
     @Test
     public void testSetLevelOutOfBounds() {
         GameConfiguration config = GameConfiguration.getGameConfiguration();
-        int currentLevel = config.getLevel();
+        int currentLevel = config.getDifficulty();
 
-        config.setLevel(0);
-        assertEquals(config.getLevel(), currentLevel);
-        config.setLevel(4);
-        assertEquals(config.getLevel(), currentLevel);
+        config.setDifficulty(0);
+        assertEquals(config.getDifficulty(), currentLevel);
+        config.setDifficulty(4);
+        assertEquals(config.getDifficulty(), currentLevel);
     }
 
     @Test
