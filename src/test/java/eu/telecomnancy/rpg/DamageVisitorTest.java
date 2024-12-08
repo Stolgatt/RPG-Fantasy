@@ -10,7 +10,7 @@ class DamageVisitorTest {
     @Test
     void testDamageWarrior() {
         Warrior warrior = new Warrior("Strong Warrior");
-        int initialHealth = warrior.getHealth();
+        double initialHealth = warrior.getHealth();
 
         DamageVisitor damageVisitor = new DamageVisitor();
         damageVisitor.setDamage(20);
@@ -22,7 +22,7 @@ class DamageVisitorTest {
     @Test
     void testDamageWizard() {
         Wizard wizard = new Wizard("Wise Wizard");
-        int initialHealth = wizard.getHealth();
+        double initialHealth = wizard.getHealth();
 
         DamageVisitor damageVisitor = new DamageVisitor();
         damageVisitor.setDamage(15);
@@ -34,7 +34,7 @@ class DamageVisitorTest {
     @Test
     void testDamageHealer() {
         Healer healer = new Healer("Kind Healer");
-        int initialHealth = healer.getHealth();
+        double initialHealth = healer.getHealth();
 
         DamageVisitor damageVisitor = new DamageVisitor();
         damageVisitor.setDamage(10);

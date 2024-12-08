@@ -9,7 +9,7 @@ import java.util.Objects;
 public abstract class GameCharacter implements Prototype, Visitable {
 
     private String name;
-    private int health;
+    private double health;
     private int experiencePoints;
     private int level;
 
@@ -35,11 +35,11 @@ public abstract class GameCharacter implements Prototype, Visitable {
         this.name = name;
     }
 
-    public int getHealth() {
+    public double getHealth() {
         return health;
     }
 
-    public void setHealth(int health) {
+    public void setHealth(double health) {
         this.health = health;
     }
 

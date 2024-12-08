@@ -11,7 +11,7 @@ class HealVisitorTest {
     void testHealWarrior() {
         Warrior warrior = new Warrior("Strong Warrior");
         warrior.setHealth(50);
-        int initialHealth = warrior.getHealth();
+        double initialHealth = warrior.getHealth();
 
         HealVisitor healVisitor = new HealVisitor();
         healVisitor.setHeal(20);
@@ -24,7 +24,7 @@ class HealVisitorTest {
     void testHealWizard() {
         Wizard wizard = new Wizard("Wise Wizard");
         wizard.setHealth(40);
-        int initialHealth = wizard.getHealth();
+        double initialHealth = wizard.getHealth();
 
         HealVisitor healVisitor = new HealVisitor();
         healVisitor.setHeal(10);
@@ -37,7 +37,7 @@ class HealVisitorTest {
     void testHealHealer() {
         Healer healer = new Healer("Kind Healer");
         healer.setHealth(30);
-        int initialHealth = healer.getHealth();
+        double initialHealth = healer.getHealth();
 
         HealVisitor healVisitor = new HealVisitor();
         healVisitor.setHeal(25);

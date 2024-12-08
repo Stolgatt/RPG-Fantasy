@@ -5,22 +5,25 @@ import eu.telecomnancy.rpg.characters.Warrior;
 import eu.telecomnancy.rpg.characters.Wizard;
 
 public class DamageVisitor implements Visitor {
-    private int damage;
+    private double damage;
 
     public void visitWarrior(Warrior warrior){
-        warrior.setHealth(warrior.getHealth() - damage);
+        double realDamage = warrior.calculateTakeDamage(damage);
+        warrior.setHealth(warrior.getHealth() - realDamage);
     }
     public void visitWizard(Wizard wizard){
-        wizard.setHealth(wizard.getHealth() - damage);
+        double realDamage = wizard.calculateTakeDamage(damage);
+        wizard.setHealth(wizard.getHealth() - realDamage);
     }
     public void visitHealer(Healer healer){
-        healer.setHealth(healer.getHealth() - damage);
+        double realDamage = healer.calculateTakeDamage(damage);
+        healer.setHealth(healer.getHealth() - realDamage);
     }
 
-    public int getDamage() {
+    public double getDamage() {
         return damage;
     }
-    public void setDamage(int damage) {
+    public void setDamage(double damage) {
         this.damage = damage;
     }
 }
