@@ -2,9 +2,9 @@ package eu.telecomnancy.rpg;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import eu.telecomnancy.rpg.characters.Healer;
-import eu.telecomnancy.rpg.characters.Warrior;
-import eu.telecomnancy.rpg.characters.Wizard;
+import eu.telecomnancy.rpg.characters.factory.Healer;
+import eu.telecomnancy.rpg.characters.factory.Warrior;
+import eu.telecomnancy.rpg.characters.factory.Wizard;
 import org.junit.jupiter.api.Test;
 
 public class CharacterTest {

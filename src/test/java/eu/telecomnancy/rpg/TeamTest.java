@@ -1,6 +1,9 @@
 package eu.telecomnancy.rpg;
 
-import eu.telecomnancy.rpg.characters.*;
+import eu.telecomnancy.rpg.characters.factory.GameCharacter;
+import eu.telecomnancy.rpg.characters.factory.Healer;
+import eu.telecomnancy.rpg.characters.factory.Warrior;
+import eu.telecomnancy.rpg.characters.factory.Wizard;
 import eu.telecomnancy.rpg.characters.team.Team;
 import org.junit.jupiter.api.Test;
 

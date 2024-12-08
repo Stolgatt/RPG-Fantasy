@@ -1,6 +1,9 @@
 package eu.telecomnancy.rpg.App;
 
-import eu.telecomnancy.rpg.characters.*;
+import eu.telecomnancy.rpg.characters.factory.CharacterRegistry;
+import eu.telecomnancy.rpg.characters.factory.Healer;
+import eu.telecomnancy.rpg.characters.factory.Warrior;
+import eu.telecomnancy.rpg.characters.factory.Wizard;
 import eu.telecomnancy.rpg.characters.team.Team;
 import eu.telecomnancy.rpg.characters.team.TeamBuilder;
 

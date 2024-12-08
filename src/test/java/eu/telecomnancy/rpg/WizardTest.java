@@ -1,7 +1,6 @@
 package eu.telecomnancy.rpg;
 
-import eu.telecomnancy.rpg.characters.Warrior;
-import eu.telecomnancy.rpg.characters.Wizard;
+import eu.telecomnancy.rpg.characters.factory.Wizard;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

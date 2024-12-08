@@ -1,7 +1,5 @@
 package eu.telecomnancy.rpg;
 
-import eu.telecomnancy.rpg.characters.CharacterRegistry;
-import org.junit.platform.suite.api.IncludeClassNamePatterns;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
 

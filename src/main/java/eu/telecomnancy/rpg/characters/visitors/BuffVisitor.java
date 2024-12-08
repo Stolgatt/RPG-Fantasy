@@ -1,22 +1,44 @@
 package eu.telecomnancy.rpg.characters.visitors;
 
-import eu.telecomnancy.rpg.characters.Healer;
-import eu.telecomnancy.rpg.characters.Warrior;
-import eu.telecomnancy.rpg.characters.Wizard;
+import eu.telecomnancy.rpg.characters.factory.Healer;
+import eu.telecomnancy.rpg.characters.factory.Warrior;
+import eu.telecomnancy.rpg.characters.factory.Wizard;
 
+/**
+ * The BuffVisitor applies a "buff" (stat boost) to characters of type Warrior, Wizard, and Healer.
+ * This visitor modifies certain attributes of a character by increasing or decreasing their value.
+ */
 public class BuffVisitor implements Visitor{
     private int buff;
 
+    /**
+     * Applies a buff to the Warrior's strength.
+     *
+     * @param warrior The Warrior to buff.
+     */
     public void visitWarrior(Warrior warrior){
         warrior.setStrength(warrior.getStrength() + buff);
     }
+
+    /**
+     * Applies a buff to the Wizard's intelligence.
+     *
+     * @param wizard The Wizard to buff.
+     */
     public void visitWizard(Wizard wizard){
         wizard.setIntelligence(wizard.getIntelligence() + buff);
     }
+
+    /**
+     * Applies a buff to the Healer's wisdom.
+     *
+     * @param healer The Healer to buff.
+     */
     public void visitHealer(Healer healer){
         healer.setWisdom(healer.getWisdom() + buff);
     }
 
+    // Getters and Setters for the buff value
     public int getBuff() {
         return buff;
     }

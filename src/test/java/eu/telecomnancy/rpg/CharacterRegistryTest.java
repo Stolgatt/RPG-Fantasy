@@ -1,6 +1,6 @@
 package eu.telecomnancy.rpg;
 
-import eu.telecomnancy.rpg.characters.*;
+import eu.telecomnancy.rpg.characters.factory.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
