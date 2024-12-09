@@ -3,25 +3,35 @@ package eu.telecomnancy.rpg.characters.factory;
 
 import eu.telecomnancy.rpg.characters.Prototype;
 import eu.telecomnancy.rpg.characters.Visitable;
+import eu.telecomnancy.rpg.characters.observer.DeathObserver;
+import eu.telecomnancy.rpg.characters.observer.LevelUpObserver;
+import eu.telecomnancy.rpg.characters.observer.Observable;
+import eu.telecomnancy.rpg.characters.observer.Observer;
 import eu.telecomnancy.rpg.characters.strategy.CombatStrategy;
 import eu.telecomnancy.rpg.characters.visitors.Visitor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public abstract class GameCharacter implements Prototype, Visitable {
+public abstract class GameCharacter implements Prototype, Visitable, Observable {
 
     private String name;
     private double health;
-    private int experiencePoints;
+    private double experiencePoints;
     private int level;
 
     private CombatStrategy strategy;
+
+    private List<Observer> observers = new ArrayList<>();
 
 
     public GameCharacter(String name) {
         this.name = name;
         this.experiencePoints = 0;
         this.level = 1;
+        attach(new LevelUpObserver(this));
+        attach(new DeathObserver(this));
     }
 
     //Pattern Prototype
@@ -41,6 +51,24 @@ public abstract class GameCharacter implements Prototype, Visitable {
      */
     public abstract void accept(Visitor visitor);
 
+    //Pattern Observer
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void detach(Observer observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }
+
+    public List<Observer> getObservers() {
+        return this.observers;
+    }
 
     //Getter & Setter
     public String getName() {
@@ -55,16 +83,26 @@ public abstract class GameCharacter implements Prototype, Visitable {
         return health;
     }
 
+    /**
+     * Update character's health and notify observers.
+     * @param health the new health value
+     */
     public void setHealth(double health) {
         this.health = health;
+        notifyObservers(); // Trigger observer updates whenever health changes
     }
 
-    public int getExperiencePoints() {
+    public double getExperiencePoints() {
         return experiencePoints;
     }
 
-    public void setExperiencePoints(int experiencePoints) {
+    /**
+     * Update character's experience points and notify observers.
+     * @param experiencePoints the new experience points value
+     */
+    public void setExperiencePoints(double experiencePoints) {
         this.experiencePoints = experiencePoints;
+        notifyObservers(); // Trigger observer updates whenever health changes
     }
 
     public int getLevel() {
