@@ -1,5 +1,6 @@
 package eu.telecomnancy.rpg.characters.visitors;
 
+import eu.telecomnancy.rpg.characters.decorator.ArmoredDecorator;
 import eu.telecomnancy.rpg.characters.factory.Healer;
 import eu.telecomnancy.rpg.characters.factory.Warrior;
 import eu.telecomnancy.rpg.characters.factory.Wizard;
@@ -36,6 +37,15 @@ public class HealVisitor implements Visitor {
      */
     public void visitHealer(Healer healer){
         healer.setHealth(healer.getHealth() + heal);
+    }
+
+    /**
+     * Applies healing to the ArmoredDecorator.
+     *
+     * @param armor The ArmoredDecorator to heal.
+     */
+    public void visitArmor(ArmoredDecorator armor){
+        armor.setHealth(armor.getHealth() + heal);
     }
 
     // Getters and Setters for the healing amount

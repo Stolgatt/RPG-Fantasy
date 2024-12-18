@@ -1,5 +1,6 @@
 package eu.telecomnancy.rpg.characters.visitors;
 
+import eu.telecomnancy.rpg.characters.decorator.ArmoredDecorator;
 import eu.telecomnancy.rpg.characters.factory.Healer;
 import eu.telecomnancy.rpg.characters.factory.Warrior;
 import eu.telecomnancy.rpg.characters.factory.Wizard;
@@ -37,6 +38,16 @@ public class BuffVisitor implements Visitor{
     public void visitHealer(Healer healer){
         healer.setWisdom(healer.getWisdom() + buff);
     }
+
+    /**
+     * Applies a buff to the ArmoredDecorator's factor.
+     *
+     * @param armor The ArmoredDecorator to buff.
+     */
+    public void visitArmor(ArmoredDecorator armor){
+        armor.setArmorFactor(armor.getArmorFactor() + buff);
+    }
+
 
     // Getters and Setters for the buff value
     public int getBuff() {

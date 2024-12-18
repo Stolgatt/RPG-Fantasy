@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class GameCharacter implements Prototype, Visitable, Observable {
+public abstract class GameCharacter implements CharacterInterface, Prototype, Visitable, Observable {
 
     private String name;
     private double health;

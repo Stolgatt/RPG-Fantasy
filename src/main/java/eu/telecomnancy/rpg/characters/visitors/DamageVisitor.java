@@ -1,5 +1,6 @@
 package eu.telecomnancy.rpg.characters.visitors;
 
+import eu.telecomnancy.rpg.characters.decorator.ArmoredDecorator;
 import eu.telecomnancy.rpg.characters.factory.Healer;
 import eu.telecomnancy.rpg.characters.factory.Warrior;
 import eu.telecomnancy.rpg.characters.factory.Wizard;
@@ -39,6 +40,15 @@ public class DamageVisitor implements Visitor {
     public void visitHealer(Healer healer){
         double realDamage = healer.calculateTakeDamage(damage);
         healer.setHealth(healer.getHealth() - realDamage);
+    }
+
+    /**
+     * Applies damage to the ArmoredDecorator.
+     *
+     * @param armor The ArmoredDecorator to damage.
+     */
+    public void visitArmor(ArmoredDecorator armor){
+        armor.setArmorFactor(armor.getArmorFactor() - damage);
     }
 
     // Getters and Setters for the damage value

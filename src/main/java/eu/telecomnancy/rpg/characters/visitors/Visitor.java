@@ -1,5 +1,6 @@
 package eu.telecomnancy.rpg.characters.visitors;
 
+import eu.telecomnancy.rpg.characters.decorator.ArmoredDecorator;
 import eu.telecomnancy.rpg.characters.factory.Healer;
 import eu.telecomnancy.rpg.characters.factory.Warrior;
 import eu.telecomnancy.rpg.characters.factory.Wizard;
@@ -29,4 +30,11 @@ public interface Visitor {
      * @param healer The Healer to visit.
      */
     public void visitHealer(Healer healer);
+
+    /**
+     * Visit an ArmoredDecorator.
+     *
+     * @param armor The ArmoredDecorator to visit.
+     */
+    public void visitArmor(ArmoredDecorator armor);
 }
