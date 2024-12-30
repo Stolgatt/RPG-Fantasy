@@ -4,7 +4,7 @@ abstract class GameCharacter {
     String name
     int health
     int experiencepoints
-    int level
+    int difficulty
 
 }
 
