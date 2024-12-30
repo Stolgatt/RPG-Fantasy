@@ -60,6 +60,10 @@ public abstract class GameCharacter implements CharacterInterface, Prototype, Vi
         observers.remove(observer);
     }
 
+    public void detachAllObservers() {
+        observers.clear();
+    }
+
     public void notifyObservers() {
         for (Observer observer : observers) {
             observer.update();

@@ -20,6 +20,7 @@ import org.junit.platform.suite.api.Suite;
         CombatStrategyTest.class,
         ObserverTests.class,
         CharacterDecoratorTest.class,
+        GameFacadeTest.class,
 })
 public class AllTests {
 }

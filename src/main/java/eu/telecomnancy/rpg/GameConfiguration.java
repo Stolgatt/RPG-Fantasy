@@ -11,7 +11,8 @@ public class GameConfiguration {
     private int difficulty; // current game difficulty level
     private final int maxDifficulty = 3; // Maximum allowed difficulty level
     private final int minDifficulty = 1; // Minimum allowed difficulty level
-    private int maxSizeTeam; // Maximum allowed team size
+    private int maxSizeTeam; // Maximum team size chosen by the player
+    private final int maxSizeTeamAllowed = 10; // Maximum allowed team size
 
     //constructor
     /**
@@ -29,6 +30,7 @@ public class GameConfiguration {
     public static GameConfiguration getGameConfiguration() {
         if (GameConfiguration.instance == null) {
             GameConfiguration.instance = new GameConfiguration();
+            instance.setDifficulty(instance.getMinDifficulty());
         }
         return GameConfiguration.instance;
     }
@@ -60,5 +62,16 @@ public class GameConfiguration {
     }
     public int getMaxSizeTeam() {
         return this.maxSizeTeam;
+    }
+
+    public int getMaxSizeTeamAllowed(){
+        return this.maxSizeTeamAllowed;
+    }
+
+    public int getMinDifficulty() {
+        return this.minDifficulty;
+    }
+    public int getMaxDifficulty() {
+        return this.maxDifficulty;
     }
 }

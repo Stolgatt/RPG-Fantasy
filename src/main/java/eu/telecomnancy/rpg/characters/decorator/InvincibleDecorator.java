@@ -26,4 +26,13 @@ public class InvincibleDecorator extends CharacterDecorator {
     public double calculateTakeDamage(double baseDamage) {
         return 0;
     }
+
+    /**
+     * Calculates the damage dealt by the character in the armor.
+     * @param baseDamage the original incoming damage
+     * @return the actual damage amount.
+     */
+    public double calculateDealDamage(double baseDamage) {
+        return decoratedCharacter.calculateDealDamage(baseDamage);
+    }
 }

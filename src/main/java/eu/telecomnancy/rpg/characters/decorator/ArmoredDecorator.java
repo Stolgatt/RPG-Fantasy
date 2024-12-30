@@ -53,6 +53,15 @@ public class ArmoredDecorator extends CharacterDecorator implements Visitable {
     }
 
     /**
+     * Calculates the damage dealt by the character in the armor.
+     * @param baseDamage the original incoming damage
+     * @return the actual damage amount.
+     */
+    public double calculateDealDamage(double baseDamage) {
+        return decoratedCharacter.calculateDealDamage(baseDamage);
+    }
+
+    /**
      * Accepts a visitor for applying operations on this character.
      * @param visitor the visitor to apply.
      */

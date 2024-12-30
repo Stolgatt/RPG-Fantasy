@@ -1,9 +1,6 @@
 package eu.telecomnancy.rpg;
 
-import eu.telecomnancy.rpg.characters.factory.GameCharacter;
-import eu.telecomnancy.rpg.characters.factory.Healer;
-import eu.telecomnancy.rpg.characters.factory.Warrior;
-import eu.telecomnancy.rpg.characters.factory.Wizard;
+import eu.telecomnancy.rpg.characters.factory.*;
 import eu.telecomnancy.rpg.characters.team.Team;
 import org.junit.jupiter.api.Test;
 
@@ -97,8 +94,8 @@ class TeamTest {
 
         Team clone = original.clone();
 
-        GameCharacter originalPlayer = original.getPlayer("Healer");
-        GameCharacter clonedPlayer = clone.getPlayer("Healer");
+        CharacterInterface originalPlayer = original.getPlayer("Healer");
+        CharacterInterface clonedPlayer = clone.getPlayer("Healer");
 
         // Vérifie que ce sont des objets différents
         assertNotSame(originalPlayer, clonedPlayer);

@@ -1,5 +1,7 @@
 package eu.telecomnancy.rpg.characters.team;
 
+import eu.telecomnancy.rpg.characters.decorator.CharacterDecorator;
+import eu.telecomnancy.rpg.characters.factory.CharacterInterface;
 import eu.telecomnancy.rpg.characters.factory.GameCharacter;
 import eu.telecomnancy.rpg.characters.Prototype;
 
@@ -15,7 +17,7 @@ import java.util.Collection;
 public class Team implements Prototype {
 
     private String name;
-    private Collection<GameCharacter> players;
+    private Collection<CharacterInterface> players;
 
 
     //Constructeur & Clone
@@ -26,22 +28,50 @@ public class Team implements Prototype {
      */
     public Team(String name) {
         this.name = name;
-        players=new ArrayList<GameCharacter>();
+        players=new ArrayList<CharacterInterface>();
     }
 
     /**
      * Private copy constructor used for cloning a team.
-     * Creates deep copies of all players.
+     * Creates deep copies of all base players, without any decorator.
      *
      * @param source the original team to clone.
      */
     private Team(Team source) {
         this.name = source.name;
         this.players = new ArrayList<>();
-        for (GameCharacter player : source.players) {
-            this.players.add(player.clone()); // Deep copy for each character
+
+        for (CharacterInterface player : source.players) {
+            // Récupérer le personnage de base en déroulant les décorateurs si nécessaire
+            GameCharacter baseCharacter = unwrapCharacter(player);
+
+            // Cloner le personnage de base pour garantir une copie indépendante
+            this.players.add(baseCharacter.clone());
         }
     }
+
+    /**
+     * Helper method to unwrap a CharacterInterface and retrieve the base GameCharacter.
+     * If the character is decorated, recursively traverse the decorators to find the core GameCharacter.
+     *
+     * @param character the CharacterInterface to unwrap
+     * @return the base GameCharacter
+     * @throws IllegalArgumentException if the character cannot be unwrapped to a GameCharacter
+     */
+    private GameCharacter unwrapCharacter(CharacterInterface character) {
+        // Traverse through decorators until the base GameCharacter is found
+        while (character instanceof CharacterDecorator) {
+            character = ((CharacterDecorator) character).getInnerCharacter();
+        }
+
+        // Ensure the final unwrapped character is a GameCharacter
+        if (character instanceof GameCharacter) {
+            return (GameCharacter) character;
+        } else {
+            throw new IllegalArgumentException("Invalid character type: Unable to unwrap to GameCharacter.");
+        }
+    }
+
 
     /**
      * Creates a deep clone of the team.
@@ -62,7 +92,7 @@ public class Team implements Prototype {
         this.name = name;
     }
     
-    public Collection<GameCharacter> getPlayers() {
+    public Collection<CharacterInterface> getPlayers() {
         return players;
     }
 
@@ -75,7 +105,7 @@ public class Team implements Prototype {
     }
 
     public void removePlayer(String name) {
-        for (GameCharacter player : players) {
+        for (CharacterInterface player : players) {
             if (player.getName().equals(name)) {
                 players.remove(player);
                 return;
@@ -83,8 +113,8 @@ public class Team implements Prototype {
         }
     }
 
-    public GameCharacter getPlayer(String name) {
-        for (GameCharacter player : players) {
+    public CharacterInterface getPlayer(String name) {
+        for (CharacterInterface player : players) {
             if (player.getName().equals(name)) {
                 return player;
             }
@@ -92,8 +122,19 @@ public class Team implements Prototype {
         return null;
     }
 
+    public void changePlayer(CharacterInterface player, CharacterInterface newPlayer) {
+        if (!this.players.contains(player)) {
+            throw new IllegalArgumentException("The player is not in the team");
+        }
+        else if (this.players.contains(newPlayer)) {
+            throw new IllegalArgumentException("The new player is already in the team");
+        }
+        this.players.remove(player);
+        this.players.add(newPlayer);
+    }
+
     public boolean containsPlayer(String name) {
-        for (GameCharacter player : players) {
+        for (CharacterInterface player : players) {
             if (player.getName().equals(name)) {
                 return true;
             }

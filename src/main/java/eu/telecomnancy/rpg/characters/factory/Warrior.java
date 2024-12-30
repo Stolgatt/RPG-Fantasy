@@ -1,5 +1,7 @@
 package eu.telecomnancy.rpg.characters.factory;
 
+import eu.telecomnancy.rpg.characters.observer.DeathObserver;
+import eu.telecomnancy.rpg.characters.observer.LevelUpObserver;
 import eu.telecomnancy.rpg.characters.strategy.NeutralStrategy;
 import eu.telecomnancy.rpg.characters.visitors.Visitor;
 
@@ -39,6 +41,8 @@ public class Warrior extends GameCharacter {
         this.setHealth(source.getHealth());
         this.setLevel(source.getLevel());
         this.setCombatStrategy(new NeutralStrategy()); //Le clone commencera avec une stratégie Neutre initialement
+        this.attach(new LevelUpObserver(this));
+        this.attach(new DeathObserver(this));
     }
 
     /**

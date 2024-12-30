@@ -58,4 +58,7 @@ public interface CharacterInterface {
     void setLevel(int level);
 
     public double calculateTakeDamage(double baseDamage);
+
+    public double calculateDealDamage(double baseDamage);
+
 }
