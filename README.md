@@ -104,12 +104,12 @@ Les diagrammes UML sont générés à l'aide de **PlantUML**. Ils décrivent :
 - La structure des classes.
 - Les interactions entre les objets et les patterns.
 
-Vous trouverez les diagrammes [ici](uml/).
+Vous trouverez les diagrammes [ici](Documentation/uml).
 
 ---
 
 ## Code source
-Le code source complet est disponible dans le dossier [main](src/main). Chaque fichier est accompagné de commentaires détaillés pour faciliter la compréhension.
+Le code source complet est disponible dans le dossier [rpg](src/main/java/eu/telecomnancy/rpg). Chaque fichier est accompagné de commentaires détaillés pour faciliter la compréhension.
 
 ---
 
@@ -117,11 +117,20 @@ Le code source complet est disponible dans le dossier [main](src/main). Chaque f
 
 ### Organisation des tests
 Les tests unitaires sont organisés pour valider le comportement des différentes parties du jeu, notamment :
-- La logique métier (ex : système de combat, gestion de l’inventaire).
+- La logique métier (ex : système de combat, ajout et suppression d'équipe et de personnages, modifications de stratégies, prises de dégats, ajout de buff, etc.).
 - Les fonctionnalités associées aux Design Patterns (ex : création d’objets avec le Factory Method, notification avec le pattern Observer).
 
 ### Structure des tests
-Les tests unitaires sont situés dans le répertoire [test](src/test/) et suivent une structure parallèle à celle des fichiers source.
+Les tests unitaires sont situés dans le répertoire [test](src/test) et sont structurés comme suit :
+    - Un ou plusieurs fichiers de tests pour chaque design pattern
+    - Un fichier de tests AllTests.java qui démarre les tous les autres tests
+
+**WARNING** : si au lancement des tests, un terminal apparait demandant de rentrer des valeurs et que celui-ci est en read-only,
+vous pouvez aller à la **ligne 25 du fichier GameFacade.test** et _commenter la ligne 25_ et _décommenter la ligne 26_.
+Les tests seront alors effectués avec les valeurs **2** pour la difficulté et **5** pour le nombre max de personnages dans une équipe.
+
+Pour lancer l'application cependant, il faut lancer le projet depuis un terminal dans lequel vous pouvez répondre et donner
+les valeurs que vous souhaitez.
 
 ---
 
