@@ -63,9 +63,41 @@ Cette section détaille chaque Design Pattern utilisé, leur rôle et comment il
     - **Implémentation** : à nouveau le dossier [Team](src/main/java/eu/telecomnancy/rpg/characters/factory) qui contient les fichiers permettant la création d'équipe par ajout successif de personnages et même un TeamDirector qui permet de créer des team par défaut, composés de différents personnages. Il suffit alors de créer ces teams au démarrage de l'application et de les stocker dans un TeamRegistry afin de les cloner ensuite via le pattern Prototype.
 
 5. **Visiteur** :
-    - **Rôle** :
+    - **Rôle** : Implémenter des algorithmes qui s'appliqueront sur différents objets, et permettre à différents types d'objets de recevoir des modifications par la même classe, avec potentiellement un algorithme différents selon le type.
+    - **Problème résolu** : On chercher à effectuer différentes modifications ou appliquer différents effets à des objets de type variés. Plutôt que de dupliquer le code de nombreuses fois et surcharger les classes d'objets de codes liés à ces modifications, on va plutôt chercher à écrire des classes de Visiteurs qui vont contenir le code nécéssaire et s'imposer aux objets qui nécéssitent des modifications. Ceux-ci, via une méthode accept vont recevoir le Visiteur et s'appliquer eux-même le code nécéssaire et qui correspond à leur type. La classe Visiteur est donc là pour apporter dynamiquement le code nécéssaire à un objet, sans surcharger statiquement le code de l'objet.
+    - **Implémentation** : voir dossier [visitors](src/main/java/eu/telecomnancy/rpg/characters/visitors). On a une interface permettant d'unifier le code des objets visitable et également une interface pour unifier le code des objets visités. Tous les visiteurs doivent implémenter une version de l'algorithme qu'ils représentent destinée à chaque objet visitable.
+
+6. **Strategy** :
+    - **Rôle** : Fournir dynamiquement à des objets des variations dans leurs algorithmes.
+    - **Problème résolu** : Plutôt que de surcharger le code d'un objet en lui ajoutant par exemple une variable stockant son "état" et des conditions dans l'algorithme permettant d'appliquer telle ou telle version de l'algorithme selon l'"état" actuel de l'objet, on va plutot demander à l'objet de stocker une instance d'une stratégie. Dans le code de cet objet, la méthode qui applique l'algorithme en question va alors demander à l'instance de la stratégie d'appliquer sa version de l'algorithme. Les stratégies étant intervertibles, on peut dynamiquement indiquer à l'objet d'appliquer une version ou l'autre de l'algorithme.
+    - **Implémentation** : voir dossier [strategy](src/main/java/eu/telecomnancy/rpg/characters/strategy). Il y a une interface générale de stratégie et chaque stratégie concrête va implémenter sa version de chacun des algorithmes qui doivent être adaptés dynamiquement. 
+
+7. **Observer** :
+    - **Rôle** : Observer des changements dans les attributs de l'objet qui leur est confié et y réagir si nécéssaire
+    - **Problème résolu** : On cherche à automatiser la mort ou la montée en niveau d'un personnage. Encore une fois dans une optique de séparer les responsabilités et éviter de surcharger le code, on va créer un Observer pour chacune de ces deux fonctions et tout personnage créé se verra attribuer les deux observer nécéssaires. Lors de modifications de certains de ses attributs comme ici la vie et la quantité de point d'expérience, les observer vont êêtre réveillés et vont éventuellement réagir (vie nulle ou négative ou points d'expérience dépassant un seuil).
+    - **Implémentation** : voir dossier [observer](src/main/java/eu/telecomnancy/rpg/characters/observer). Il y a deux interfaces : Observer pour chaque observer et Observable pour que les objets observables implémentent les méthodes nécéssaires à l'ajout d'un observer, à sa suppression et à la notification des observer liés à l'objet.
+
+8. **Decorators** : 
+    - **Rôle** : ajouter et supprimer dynamiquement des améliorations (modifications) durables sur un objet.
+    - **Problème résolu** : On veut pouvoir modifier le comportement d'un objet de manière dynamique en lui ajoutant un effet, une amélioration. En l'occurence ici on veut pouvoir ajouter une ou plusieurs armures à un personnage qui va alors recevoir moins de dégats voir même le rendre invincible. On va donc créer des classes qui d'un côté stockeront une instance de l'objet équipé d'une armure ou invincible (un personnage éventuellement déjà entouré d'armure) et d'un autre côté pourront apporter un pré-traitement ou un post-traitement aux méthodes contenues dans la classe de l'objet, par exemple diminuer les dégats reçus avant qu'ils ne soient comptabilisés par le personnage directement. 
+    - **Implémentation** : voir dossier [decorator](src/main/java/eu/telecomnancy/rpg/characters/decorator). On une classe abstraite CharacterDecorator qui va pouvoir stocker et ensuite se substituer dans le reste de l'application à un GameCharacter via l'interface CharacterInterface. Alors les méthodes calculateDealDamage et CalculateTakeDamage implémentées dans la classse GameCharacter vont être réécrite en ajoutant un pré-traitement au paramètre baseDamage avant d'appeler la même méthode dans l'instance de CharacterInterface équipée de ce décorateur et récursivement diminuer la quantité de dégat reçus avant d'être finalement comptabilisé par l'instance de GameCharacter à l'intérieur de tous les décorateurs. 
+
+8. **Command** : 
+    - **Rôle**
     - **Problème résolu** :
     - **Implémentation** :
+
+8. **Invoker** : 
+    - **Rôle**
+    - **Problème résolu** :
+    - **Implémentation** :
+
+8. **Client** : 
+    - **Rôle**
+    - **Problème résolu** :
+    - **Implémentation** :
+
+
 
 ### Diagrammes UML (A MODIFIER)
 Les diagrammes UML sont générés à l'aide de **PlantUML**. Ils décrivent :
