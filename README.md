@@ -42,6 +42,11 @@ L’objectif est de concevoir un prototype de jeu RPG qui fourni les fonctionnal
 ### Patterns utilisés
 Cette section détaille chaque Design Pattern utilisé, leur rôle et comment ils ont résolu des problèmes de conception dans le jeu.
 
+1. **Singleton** :
+    - **Rôle** : Garantir une instance unique d'une classe regroupant des paramètres globaux du jeu et accessibles de partout
+    - **Problème résolu** : on cherche à avoir une classe qui regroupe des paramètres utiles à de nombreux endroits de la conception et qui soit unique, pour éviter des doublons de configuration qui affecterait la cohérence du jeu.
+    - **Implémentation** : voir [GameConfiguration.java](src/main/java/eu/telecomnancy/rpg/GameConfiguration.java). Une seule classe avec un attribut static qui stock sa propore instance unique et un constructeur public et static qui soit renvoie cette instance si elle est initialisée, soit la créer. Le constructeur sans paramètre est marqué privé.
+
 1. **Factory Method** :
     - **Rôle** : Centraliser la création des objets du jeu, comme les ennemis, PNJs, ou items.
     - **Problème résolu** : Éviter de dupliquer le code de création des objets complexes.
