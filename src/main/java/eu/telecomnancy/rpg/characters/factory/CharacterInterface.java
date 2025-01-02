@@ -1,5 +1,6 @@
 package eu.telecomnancy.rpg.characters.factory;
 
+import eu.telecomnancy.rpg.characters.strategy.CombatStrategy;
 import eu.telecomnancy.rpg.characters.visitors.Visitor;
 
 /**
@@ -61,4 +62,7 @@ public interface CharacterInterface {
 
     public double calculateDealDamage(double baseDamage);
 
+    public void setCombatStrategy(CombatStrategy strategy);
+
+    public CombatStrategy getCombatStrategy();
 }

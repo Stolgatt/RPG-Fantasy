@@ -1,0 +1,12 @@
+@startuml
+
+' Diagramme d'état
+
+
+[*] --> Team : create a new team using a TeamBuilder\nor even a TeamDirector for typicall teams
+Team --> Team : addPlayers (add new element of type CharacterInterface)
+Team --> Team : changePlayer (replace an existing player by another one)
+
+
+
+@enduml

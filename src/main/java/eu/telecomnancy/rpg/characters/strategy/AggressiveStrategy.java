@@ -29,4 +29,7 @@ public class AggressiveStrategy implements CombatStrategy {
         return  1.3 * baseDamage;
     }
 
+    public String getName(){
+        return "Aggressive";
+    }
 }

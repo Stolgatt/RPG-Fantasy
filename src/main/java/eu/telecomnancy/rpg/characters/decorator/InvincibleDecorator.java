@@ -35,4 +35,8 @@ public class InvincibleDecorator extends CharacterDecorator {
     public double calculateDealDamage(double baseDamage) {
         return decoratedCharacter.calculateDealDamage(baseDamage);
     }
+
+    public String toString(){
+        return decoratedCharacter.toString() + " Invincibility";
+    }
 }

@@ -1,0 +1,20 @@
+Projet : RPG en Java en utilisant des Design Pattern
+
+Auteur : Alexis CHAVY
+Date rendu : 12.01.2025
+
+Contenu :
+
+- dossier src/main qui contient tout le code source du projet dont
+    - main.java.eu.telecomnancy.rpg.App.main l'entrée du projet
+    - main.java.eu.telecomnancy.rpg.GameFacade la facade du projet avec les fonctions de base pour utiliser l'application
+- dossier src/test qui contient tous les tests JUnit effectués, dont
+    - java.eu.telecomnancy.rpg.AllTests.java qui démarre les tous les autres tests
+
+WARNING : si au lancement des tests, un terminal apparait demandant de rentrer des valeurs et que celui-ci est en read-only,
+vous pouvez aller à la ligne 25 du fichier GameFacade.test et commenter la ligne 25 et décommenter la ligne 26.
+Les tests seront alors effectués avec les valeurs 2 pour la difficulté et 5 pour le nombre max de personnages dans une équipe.
+
+Pour lancer l'application cependant, il faut lancer le projet depuis un terminal dans lequel vous pouvez répondre et donner
+les valeurs que vous souhaitez.
+

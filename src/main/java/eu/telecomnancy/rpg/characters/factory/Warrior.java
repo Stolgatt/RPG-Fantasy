@@ -41,6 +41,7 @@ public class Warrior extends GameCharacter {
         this.setHealth(source.getHealth());
         this.setLevel(source.getLevel());
         this.setCombatStrategy(new NeutralStrategy()); //Le clone commencera avec une stratégie Neutre initialement
+        this.clearObservers();
         this.attach(new LevelUpObserver(this));
         this.attach(new DeathObserver(this));
     }
@@ -76,6 +77,12 @@ public class Warrior extends GameCharacter {
     
     public void setStrength(int strength) {
         this.strength = strength;
+    }
+
+    public String toString() {
+        return observersToString() + "\u001B[31mWarrior\u001B[0m " + this.getName() + " (Level " + this.getLevel() + ") with " + this.getHealth() + " HP and " + this.getExperiencePoints() + " XP " +
+                "| \u001B[4mAttributes\u001B[0m: " + strength + " strength | \u001B[4mStrategy\u001B[0m: " + this.getCombatStrategy().getName() +
+                " | \u001B[4mBelongings\u001B[0m:";
     }
     
     

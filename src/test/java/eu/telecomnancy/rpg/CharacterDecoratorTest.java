@@ -34,6 +34,11 @@ class CharacterDecoratorTest {
         public double calculateDealDamage(double baseDamage) {
             return baseDamage; // No modifications to damage
         }
+
+        @Override
+        public String toString(){
+            return this.getName() + " in MockGameCharacterTest";
+        }
     }
 
     @Test

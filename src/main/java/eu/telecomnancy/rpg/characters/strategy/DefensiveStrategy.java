@@ -28,4 +28,8 @@ public class DefensiveStrategy implements CombatStrategy {
     public double calculateDamageReceived(double baseDamage){
         return  baseDamage*0.8;
     }
+
+    public String getName(){
+        return "Defensive";
+    }
 }

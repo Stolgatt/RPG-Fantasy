@@ -1,9 +1,8 @@
 package eu.telecomnancy.rpg.characters.visitors;
 
+import eu.telecomnancy.rpg.characters.Visitable;
 import eu.telecomnancy.rpg.characters.decorator.ArmoredDecorator;
-import eu.telecomnancy.rpg.characters.factory.Healer;
-import eu.telecomnancy.rpg.characters.factory.Warrior;
-import eu.telecomnancy.rpg.characters.factory.Wizard;
+import eu.telecomnancy.rpg.characters.factory.*;
 
 /**
  * The DamageVisitor applies damage to characters of type Warrior, Wizard, and Healer.
@@ -18,8 +17,7 @@ public class DamageVisitor implements Visitor {
      * @param warrior The Warrior to deal damage to.
      */
     public void visitWarrior(Warrior warrior){
-        double realDamage = warrior.calculateTakeDamage(damage);
-        warrior.setHealth(warrior.getHealth() - realDamage);
+        warrior.setHealth(warrior.getHealth() - damage);
     }
 
     /**
@@ -28,8 +26,7 @@ public class DamageVisitor implements Visitor {
      * @param wizard The Wizard to deal damage to.
      */
     public void visitWizard(Wizard wizard){
-        double realDamage = wizard.calculateTakeDamage(damage);
-        wizard.setHealth(wizard.getHealth() - realDamage);
+        wizard.setHealth(wizard.getHealth() - damage);
     }
 
     /**
@@ -38,8 +35,7 @@ public class DamageVisitor implements Visitor {
      * @param healer The Healer to deal damage to.
      */
     public void visitHealer(Healer healer){
-        double realDamage = healer.calculateTakeDamage(damage);
-        healer.setHealth(healer.getHealth() - realDamage);
+        healer.setHealth(healer.getHealth() - damage);
     }
 
     /**
@@ -48,7 +44,15 @@ public class DamageVisitor implements Visitor {
      * @param armor The ArmoredDecorator to damage.
      */
     public void visitArmor(ArmoredDecorator armor){
-        armor.setArmorFactor(armor.getArmorFactor() - damage);
+        if (armor.getArmorFactor() == 0.0){         // The armor is broken, doing everything like it doesn't exist
+            CharacterInterface inner = armor.getInnerCharacter();
+            DamageVisitor visitor = new DamageVisitor();
+            visitor.setDamage(damage);
+            ((Visitable) inner).accept(visitor);
+        }
+        else{
+            armor.setArmorFactor(armor.getArmorFactor() - damage);
+        }
     }
 
     // Getters and Setters for the damage value
@@ -59,3 +63,4 @@ public class DamageVisitor implements Visitor {
         this.damage = damage;
     }
 }
+

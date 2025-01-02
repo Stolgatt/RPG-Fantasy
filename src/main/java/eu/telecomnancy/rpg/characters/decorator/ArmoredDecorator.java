@@ -15,7 +15,7 @@ public class ArmoredDecorator extends CharacterDecorator implements Visitable {
     /**
      * Constructor for the ArmoredDecorator.
      * @param character the character to decorate with armor.
-     * @param armorFactor the reduction factor applied to incoming damage (e.g., 0.2 reduces damage by 20%).
+     * @param armorFactor the reduction factor applied to incoming damage (e.g., 20 reduces damage by 20%).
      */
     public ArmoredDecorator(CharacterInterface character, double armorFactor) {
         super(character);
@@ -29,7 +29,7 @@ public class ArmoredDecorator extends CharacterDecorator implements Visitable {
     public void setArmorFactor(double factor) {
         if (factor < 0){
             this.armorFactor = 0;
-            System.out.println("The character " + decoratedCharacter.toString() + " has broken his armor");
+            System.out.println("\nThe character \"" + decoratedCharacter.toString() + "\" has broken his armor");
         } else {
             this.armorFactor = factor;
         }
@@ -49,7 +49,7 @@ public class ArmoredDecorator extends CharacterDecorator implements Visitable {
      * @return the reduced damage after applying armor.
      */
     public double calculateTakeDamage(double baseDamage) {
-        return Math.round(decoratedCharacter.calculateTakeDamage(baseDamage) * (1 - armorFactor));
+        return Math.round(decoratedCharacter.calculateTakeDamage(baseDamage) * (1-(armorFactor/100)));
     }
 
     /**
@@ -68,5 +68,9 @@ public class ArmoredDecorator extends CharacterDecorator implements Visitable {
     @Override
     public void accept(Visitor visitor) {
         visitor.visitArmor(this);
+    }
+
+    public String toString(){
+        return decoratedCharacter.toString() + " Armor (" + armorFactor + ")";
     }
 }

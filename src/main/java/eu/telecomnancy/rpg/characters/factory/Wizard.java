@@ -41,6 +41,7 @@ public class Wizard extends GameCharacter {
         this.setHealth(source.getHealth());
         this.setLevel(source.getLevel());
         this.setCombatStrategy(new NeutralStrategy()); //Le clone commencera avec une stratégie Neutre initialement
+        this.clearObservers();
         this.attach(new LevelUpObserver(this));
         this.attach(new DeathObserver(this));
     }
@@ -75,5 +76,11 @@ public class Wizard extends GameCharacter {
 
     public void setIntelligence(int intelligence) {
         this.intelligence = intelligence;
+    }
+
+    public String toString() {
+        return observersToString() + "\u001B[32mWizard\u001B[0m " + this.getName() + " (Level " + this.getLevel() + ") with " + this.getHealth() + " HP and " + this.getExperiencePoints() + " XP " +
+                "| \u001B[4mAttributes\u001B[0m: " + intelligence + " intelligence | \u001B[4mStrategy\u001B[0m: " + this.getCombatStrategy().getName() +
+                " | \u001B[4mBelongings\u001B[0m:";
     }
 }

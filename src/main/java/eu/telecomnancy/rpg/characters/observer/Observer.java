@@ -8,4 +8,6 @@ public interface Observer {
      * Method triggered when the observable state changes.
      */
     void update();
+
+    String toString();
 }

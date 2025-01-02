@@ -20,30 +20,12 @@ class GameFacadeTest {
 
     @BeforeAll
     static void setUp() {
-        // Simule les entrées utilisateur : difficulté = 3 et taille max = 5
+        // Simulate user entries : difficulty = 2 et max team size = 5
         String simulatedInput = "2\n5\n";                           // Simulated Input because Intellij Idea Terminal is in read-only
         Scanner testScanner = new Scanner(simulatedInput);          // If used from an external terminal, comment this line and use the following one
         //Scanner testScanner = null;
 
-        // Injecte le scanner simulé dans le GameFacade
         facade = new GameFacade(testScanner);
-    }
-
-    public static class FileReaderTest {
-        public static void main(String[] args) {
-            try {
-                File file = new File("src/MonFichier.txt");
-                Scanner scanner = new Scanner(file);
-
-                while (scanner.hasNextLine()) {
-                    String line = scanner.nextLine();
-                    System.out.println(line);  // Affiche chaque ligne du fichier
-                }
-                scanner.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();  // Affiche l'exception si le fichier est introuvable
-            }
-        }
     }
 
     @Test
@@ -55,14 +37,14 @@ class GameFacadeTest {
 
     @Test
     void testAddTeam() {
-        facade.addTeam("TestTeam", "Balanced");
+        facade.addTeam("TestTeam", "Balanced", null);
 
         assertTrue(facade.getTeams().containsKey("TestTeam"));
     }
 
     @Test
     void testRemoveTeam() {
-        facade.addTeam("TestTeam", "Balanced");
+        facade.addTeam("TestTeam", "Balanced", null);
 
         facade.removeTeam("TestTeam");
 
@@ -71,8 +53,8 @@ class GameFacadeTest {
 
     @Test
     void testAttack() {
-        facade.addTeam("Team1", "Balanced");
-        facade.addTeam("Team2", "Balanced");
+        facade.addTeam("Team1", "Balanced", null);
+        facade.addTeam("Team2", "Balanced", null);
 
         facade.attack("Team1", "Strong Warrior", "Team2", "Smart Wizard", 20);
 
@@ -82,7 +64,7 @@ class GameFacadeTest {
 
     @Test
     void testHealTeam() {
-        facade.addTeam("TestTeam", "Balanced");
+        facade.addTeam("TestTeam", "Balanced", null);
 
         Team team = facade.getTeams().get("TestTeam");
         CharacterInterface wa = team.getPlayer("Strong Warrior");
@@ -107,7 +89,7 @@ class GameFacadeTest {
 
     @Test
     void testAddArmor() {
-        facade.addTeam("TestTeam", "Balanced");
+        facade.addTeam("TestTeam", "Balanced", null);
 
         facade.addArmor("TestTeam", "Strong Warrior", 0.5);
 
@@ -117,7 +99,7 @@ class GameFacadeTest {
 
     @Test
     void testMakeInvincible() {
-        facade.addTeam("TestTeam", "Balanced");
+        facade.addTeam("TestTeam", "Balanced", null);
 
         facade.makeInvincible("TestTeam", "Strong Warrior");
 
@@ -127,7 +109,7 @@ class GameFacadeTest {
 
     @Test
     void testRemoveDecorator() {
-        facade.addTeam("TestTeam", "Balanced");
+        facade.addTeam("TestTeam", "Balanced", null);
 
         facade.addArmor("TestTeam", "Strong Warrior", 0.5);
         facade.removeDecorator("TestTeam", "Strong Warrior");
@@ -138,7 +120,7 @@ class GameFacadeTest {
 
     @Test
     void testBuffTeam() {
-        facade.addTeam("TestTeam", "Balanced");
+        facade.addTeam("TestTeam", "Balanced", null);
 
         Team team = facade.getTeams().get("TestTeam");
         CharacterInterface wa = team.getPlayer("Strong Warrior");
@@ -163,7 +145,7 @@ class GameFacadeTest {
 
     @Test
     void testMemoryCleanup() {
-        facade.addTeam("TestTeam", "Balanced");
+        facade.addTeam("TestTeam", "Balanced", null);
 
         facade.removeTeam("TestTeam");
 

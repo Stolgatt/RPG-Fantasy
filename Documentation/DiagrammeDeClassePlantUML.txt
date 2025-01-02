@@ -1,0 +1,112 @@
+@startuml
+' Diagramme de classes
+
+class GameConfiguration <<Singleton>>
+
+class GameFacade <<Access Point>>
+
+class CharacterRegistry
+
+class TeamRegistry
+
+
+interface Visitable {
+  + void accept(Visitor visitor)
+}
+
+interface Observable {
+  + void attach(Observer observer)
+}
+
+interface Prototype {
+  + Prototype clone()
+}
+
+interface CombatStrategy {
+  + double calculateDamageDealt(double baseDamage)
+  + double calculateDamageReceived(double baseDamage)
+}
+
+interface CharacterInterface {
+}
+
+abstract class GameCharacter implements CharacterInterface, Visitable, Prototype, Observable {
+ - String name
+ - double health
+ - double experiencePoints
+ - int level
+}
+
+class CharacterDecorator implements CharacterInterface, Visitable {
+-CharacterInterface decoratedCharacter
+}
+
+class BuffVisitor implements Visitor {
++void buff(int amount)
+}
+
+class HealVisitor implements Visitor{
++void heal(int amount)
+}
+
+class DamageVisitor implements Visitor{
++void damage(double amount)
+}
+
+class DeathObserver implements Observer
+
+class LevelUpObserver implements Observer
+
+class Warrior extends GameCharacter {
+    - int strength
+}
+
+class Wizard extends GameCharacter {
+    - int intelligence
+}
+
+class Healer extends GameCharacter {
+    - int wisdom
+}
+
+class WarriorCreator implements CharacterCreator
+
+class WizardCreator implements CharacterCreator
+
+class HealerCreator implements CharacterCreator
+
+class Team implements Prototype {
+ - String name
+ - Collection<CharacterInterface> players
+}
+
+class TeamBuilder {
+  - Team team
+}
+
+class ArmoredDecorator extends CharacterDecorator
+
+class InvincibleDecorator extends CharacterDecorator
+
+class NeutralStrategy implements CombatStrategy
+
+class StoneGolemStrategy implements CombatStrategy
+
+class DefensiveStrategy implements CombatStrategy
+
+class BerserkerStrategy implements CombatStrategy
+
+class AggressiveStrategy implements CombatStrategy
+
+
+Observable "0..2" -- "1" Observer : observe
+Visitable "0..*" -- "1" Visitor : accept
+CharacterRegistry "0..*" -- "0..*" CharacterInterface : contains
+TeamRegistry "0..*" -- "0..*" Team : contains
+TeamRegistry -- TeamDirector : can use
+TeamDirector -- TeamBuilder : uses
+TeamBuilder -- Team : creates
+GameCharacter "1" -- "1" CombatStrategy : chooses
+
+
+@enduml

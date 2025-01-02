@@ -1,0 +1,20 @@
+@startuml
+
+' Diagramme d'état
+
+state "General Character instanceOf CharacterInterface" as GalChar {
+  state GameCharacter : initialHealth = h\ninitialSpecialAttribute = y\ninitialXp = x
+  state CharacterDecorator : initialHealth = h\ninitialSpecialAttribute = y\ninitialXp = x
+}
+
+[*] --> GalChar : CharacterInterface character = createCharacter(String name)\n
+GalChar -right-> GalChar : accepts BuffVisitor with value b\nincrease initialSpecialAttribute by b
+GalChar -left-> GalChar : accepts HealVisitor with value h\nincrease initialHealth by h
+GalChar -up-> GalChar : accepts DamageVisitor with value d\ndecrease initialHealth by d
+GameCharacter --> CharacterDecorator : create a decorator wrapping the GameCharacter inside\nand replacing it with the new CharacterDecorator
+CharacterDecorator --> CharacterDecorator : create a new decorator wrapping the\nCharacterDecorator inside and replacing it
+CharacterDecorator --> GameCharacter : unwrap the GameCharacter inside one or many decorators
+CharacterDecorator -up-> CharacterDecorator : unwrap the last decorator
+GameCharacter --> GameCharacter : change the CombatStrategy
+
+@enduml

@@ -23,7 +23,7 @@ public abstract class GameCharacter implements CharacterInterface, Prototype, Vi
 
     private CombatStrategy strategy;
 
-    private List<Observer> observers = new ArrayList<>();
+    public final List<Observer> observers = new ArrayList<>();
 
 
     public GameCharacter(String name) {
@@ -74,6 +74,18 @@ public abstract class GameCharacter implements CharacterInterface, Prototype, Vi
         return this.observers;
     }
 
+    public void clearObservers() {
+        this.observers.clear();
+    }
+
+    public String observersToString(){
+        StringBuilder res = new StringBuilder();
+        for (Observer observer : observers) {
+            res.append(observer.toString());
+        }
+        return res.toString();
+    }
+
     //Getter & Setter
     public String getName() {
         return name;
@@ -117,9 +129,7 @@ public abstract class GameCharacter implements CharacterInterface, Prototype, Vi
         this.level = level;
     }
 
-    public String toString() {
-        return name + " (Level " + level + ") with " + health + " HP and " + experiencePoints + " XP";
-    }
+    abstract public String toString();
 
     //Pattern Strategy
     /**
@@ -157,7 +167,7 @@ public abstract class GameCharacter implements CharacterInterface, Prototype, Vi
      * @return the modified damage value after applying the combat strategy.
      */
     public double calculateTakeDamage(double baseDamage) {
-        return strategy.calculateDamageReceived(baseDamage);
+        return Math.round(strategy.calculateDamageReceived(baseDamage));
     }
 
 

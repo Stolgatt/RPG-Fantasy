@@ -28,4 +28,8 @@ public class BerserkerStrategy implements CombatStrategy {
     public double calculateDamageReceived(double baseDamage){
         return  baseDamage*1.5;
     }
+
+    public String getName(){
+        return "Berserker";
+    }
 }

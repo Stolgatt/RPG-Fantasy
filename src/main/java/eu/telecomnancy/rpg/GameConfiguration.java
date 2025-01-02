@@ -31,6 +31,7 @@ public class GameConfiguration {
         if (GameConfiguration.instance == null) {
             GameConfiguration.instance = new GameConfiguration();
             instance.setDifficulty(instance.getMinDifficulty());
+            instance.setMaxSizeTeam(instance.getMaxSizeTeamAllowed());
         }
         return GameConfiguration.instance;
     }
@@ -48,12 +49,18 @@ public class GameConfiguration {
             this.difficulty = difficulty;
         }
        else {
-        System.err.println("Erreur : Niveau " + difficulty + " hors des limites (" + this.minDifficulty + "-" + this.maxDifficulty + ")");
+        System.err.println("Error : Difficulty " + difficulty + " out of bounds (" + this.minDifficulty + "-" + this.maxDifficulty + ")");
        }
     }
 
     public void setMaxSizeTeam(int maxSizeTeam) {
-        this.maxSizeTeam = maxSizeTeam;
+        if (maxSizeTeam > 0 && maxSizeTeam <= this.maxSizeTeamAllowed) {
+            this.maxSizeTeam = maxSizeTeam;
+        }
+        else{
+            System.err.println("Error : maximum size of a team should be between 0 and " + (this.maxSizeTeamAllowed) +
+                    ".\nPlease enter a valid integer.");
+        }
     }
 
     //Getter

@@ -29,5 +29,7 @@ public class StoneGolemStrategy implements CombatStrategy {
         return  baseDamage*0.4;
     }
 
-
+    public String getName(){
+        return "Stone Golem";
+    }
 }

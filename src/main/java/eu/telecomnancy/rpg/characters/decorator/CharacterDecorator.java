@@ -3,6 +3,7 @@ package eu.telecomnancy.rpg.characters.decorator;
 import eu.telecomnancy.rpg.characters.Visitable;
 import eu.telecomnancy.rpg.characters.factory.CharacterInterface;
 import eu.telecomnancy.rpg.characters.factory.GameCharacter;
+import eu.telecomnancy.rpg.characters.strategy.CombatStrategy;
 import eu.telecomnancy.rpg.characters.visitors.Visitor;
 
 /**
@@ -82,5 +83,14 @@ public abstract class CharacterDecorator implements CharacterInterface, Visitabl
         return decoratedCharacter;
     }
 
+    public void setCombatStrategy(CombatStrategy strategy){
+        decoratedCharacter.setCombatStrategy(strategy);
+    }
+
+    public CombatStrategy getCombatStrategy(){
+        return decoratedCharacter.getCombatStrategy();
+    }
+
+    abstract public String toString();
 
 }

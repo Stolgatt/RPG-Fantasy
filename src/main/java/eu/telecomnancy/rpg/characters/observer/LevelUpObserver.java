@@ -27,7 +27,12 @@ public class LevelUpObserver implements Observer {
             character.setExperiencePoints(xp - xpNeeded); // Remaining XP carried over
             level++;
             character.setLevel(level); // Update the character's level
-            System.out.println("Level up: " + character.toString());
+            System.out.println("\nLevel up: " + character.toString());
         }
+    }
+
+    @Override
+    public String toString() {
+        return "";
     }
 }

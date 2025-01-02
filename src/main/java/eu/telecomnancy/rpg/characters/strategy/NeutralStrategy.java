@@ -27,4 +27,8 @@ public class NeutralStrategy implements CombatStrategy {
     public double calculateDamageReceived(double baseDamage){
         return  baseDamage;
     }
+
+    public String getName(){
+        return "Neutral";
+    }
 }

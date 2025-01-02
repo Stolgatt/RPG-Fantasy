@@ -17,5 +17,6 @@ public interface CombatStrategy {
      * @return the modified damage
      */
     double calculateDamageReceived(double baseDamage);
-    
+
+    String getName();
 }

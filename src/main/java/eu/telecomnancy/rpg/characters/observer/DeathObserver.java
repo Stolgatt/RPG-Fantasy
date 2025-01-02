@@ -7,6 +7,7 @@ import eu.telecomnancy.rpg.characters.factory.GameCharacter;
  */
 public class DeathObserver implements Observer {
     private final GameCharacter character;
+    Boolean dead = false;
 
     /**
      * Constructor to associate the observer with a specific character.
@@ -19,10 +20,20 @@ public class DeathObserver implements Observer {
     @Override
     public void update() {
         double health = character.getHealth();
-        if (health < 0) {
+        if (health <= 0 && !dead) {
+            dead = true;
             character.setHealth(0); // Ensure health does not drop below 0
-        } else if (health == 0) {
-            System.out.println("A character is dead: " + character.toString());
+            System.out.println("\nA character is dead: " + character.toString());
+        }
+    }
+
+    @Override
+    public String toString() {
+        if (dead) {
+            return "\u001B[33m[DEAD] \u001B[0m";
+        }
+        else {
+            return "";
         }
     }
 }
