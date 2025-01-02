@@ -83,18 +83,18 @@ Cette section détaille chaque Design Pattern utilisé, leur rôle et comment il
     - **Implémentation** : voir dossier [decorator](src/main/java/eu/telecomnancy/rpg/characters/decorator). On une classe abstraite CharacterDecorator qui va pouvoir stocker et ensuite se substituer dans le reste de l'application à un GameCharacter via l'interface CharacterInterface. Alors les méthodes calculateDealDamage et CalculateTakeDamage implémentées dans la classse GameCharacter vont être réécrite en ajoutant un pré-traitement au paramètre baseDamage avant d'appeler la même méthode dans l'instance de CharacterInterface équipée de ce décorateur et récursivement diminuer la quantité de dégat reçus avant d'être finalement comptabilisé par l'instance de GameCharacter à l'intérieur de tous les décorateurs. 
 
 8. **Command** : 
-    - **Rôle**
-    - **Problème résolu** :
-    - **Implémentation** :
+    - **Rôle** : Permettre l'accès facile et uniformisé à toutes les actions offertes par le système.
+    - **Problème résolu** : On cherche à effectuer des actions facilement en appelant une méthode explicite pour chaque action et que cette méthode fasse l'action voulue en permettant éventuellement d'annuler cette action et de revenir à l'état précédent l'appel à la commande.
+    - **Implémentation** : voir dossier [concreteCommand](src/main/java/eu/telecomnancy/rpg/command/concreteCommand). Chaque action permise par le jeu correspond à une classe implémentant l'interface Commande. Cette interface force l'implémentation des méthodes execute(), undo() et toString(). La première méthode permet de récupérer les paramètres qu'on a donné à la commande lors de son initialisation et d'appeller la ou les méthodes correspondantes dans la classe GameFacade qui fournit toutes les méthodes nécéssaires à l'éxecution de ces commandes. La méthode undo va elle, dans certains cas, permettre d'annuler cette action lorsqu'elle est la dernière a avoir été effectuée. Enfin toString() permet d'enregistrer et de renvoyer un message particulier pour chaque commande pour le système d'historique.
 
 8. **Invoker** : 
-    - **Rôle**
-    - **Problème résolu** :
-    - **Implémentation** :
+    - **Rôle** : découpler le client du jeu et la GameFacade, facade du backend du jeu. Permet d'executer les commandes créées par le client.
+    - **Problème résolu** : On cherche à pouvoir exécuter les commandes définies précédemment de manière uniforme, sans spécificité selon la commande. On veut de plus avoir un système d'historique permettant de le consulter mais aussi permettant d'annuler la dernière commande effectuée. Enfin on va vouloir créer des séquences de commandes avant de les effectuer à la suite et cela est permis par l'invoker.
+    - **Implémentation** : voir [GameInvoker](src/main/java/eu/telecomnancy/rpg/command/GameInvoker.java). Cette classe GameInvoker fournit toutes les méthodes nécéssaires à l'implémentation d'un système d'historique et de séquences de commandes. On peut donc ajouter des commande et l'executer ensuite. Chaque commande executée donne lieu à une nouvelle entrée dans l'historique et on peut afficher cet historique à tout moment. 
 
 8. **Client** : 
-    - **Rôle**
-    - **Problème résolu** :
+    - **Rôle** : C'est le seul moyen de communication entre l'utilisateur et la logique du jeu, en utilisant le terminal dans le cas de ce projet mais aussi possiblement en utilisant une interface graphique.
+    - **Problème résolu** : On veux pouvoir jouer.
     - **Implémentation** :
 
 
