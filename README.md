@@ -37,7 +37,7 @@ L’objectif est de concevoir un prototype de jeu RPG qui fourni les fonctionnal
 
 ---
 
-## Architecture et Design Patterns (A MODIFIER)
+## Architecture et Design Patterns
 
 ### Patterns utilisés
 Cette section détaille chaque Design Pattern utilisé, leur rôle et comment ils ont résolu des problèmes de conception dans le jeu.
@@ -95,11 +95,10 @@ Cette section détaille chaque Design Pattern utilisé, leur rôle et comment il
 8. **Client** : 
     - **Rôle** : C'est le seul moyen de communication entre l'utilisateur et la logique du jeu, en utilisant le terminal dans le cas de ce projet mais aussi possiblement en utilisant une interface graphique.
     - **Problème résolu** : On veux pouvoir jouer.
-    - **Implémentation** :
+    - **Implémentation** : voir classe [GameClient](src/main/java/eu/telecomnancy/rpg/App/GameClient.java) et [GameClientScenario](src/main/java/eu/telecomnancy/rpg/App/GameClientScenario.java). La deuxième classe fourni une suite de commandes permettant de mettre en scène ce qui est possible de faire avec le jeu. Il fait donc appel aux commandes au travers de toutes les commandes concrètes implémentées dans le dossier [concreteCommand](src/main/java/eu/telecomnancy/rpg/command/concreteCommand), de la classe [GameInvoker](src/main/java/eu/telecomnancy/rpg/command/GameInvoker.java) et de la classe [GameFaçade](src/main/java/eu/telecomnancy/rpg/App/GameFacade.java). La classe [GameClient](src/main/java/eu/telecomnancy/rpg/App/GameClient.java) elle va gérer l'ouverture d'un dialogue dans le terminal entre le jeu lui-même et l'utilisateur permettant ainsi à l'utilisateur d'ouvrir une sorte de session de jeu, dans laquelle il peut utiliser le jeu à sa guise et ensuite refermer cette session. La classe GameClient va alors parser l'ensemble des entrée utilisateur et faire correspondre à chaque entrée la commande que l'utilisateur veut executer, ou afficher une erreur si cette commande est erronée. 
 
 
-
-### Diagrammes UML (A MODIFIER)
+### Diagrammes UML
 Les diagrammes UML sont générés à l'aide de **PlantUML**. Ils décrivent :
 - La structure des classes.
 - Les interactions entre les objets et les patterns.
@@ -113,7 +112,7 @@ Le code source complet est disponible dans le dossier [rpg](src/main/java/eu/tel
 
 ---
 
-## Tests unitaires (A MODIFIER)
+## Tests unitaires
 
 ### Organisation des tests
 Les tests unitaires sont organisés pour valider le comportement des différentes parties du jeu, notamment :
@@ -122,16 +121,38 @@ Les tests unitaires sont organisés pour valider le comportement des différente
 
 ### Structure des tests
 Les tests unitaires sont situés dans le répertoire [test](test) et sont structurés comme suit :
-    - Un ou plusieurs fichiers de tests pour chaque design pattern
-    - Un fichier de tests AllTests.java qui démarre les tous les autres tests
+- Un ou plusieurs fichiers de tests pour chaque design pattern
+- Un fichier de tests AllTests.java qui démarre les tous les autres tests
 
-**WARNING** : si au lancement des tests, un terminal apparait demandant de rentrer des valeurs et que celui-ci est en read-only,
-vous pouvez aller à la **ligne 25 du fichier GameFacade.test** et _commenter la ligne 25_ et _décommenter la ligne 26_.
-Les tests seront alors effectués avec les valeurs **2** pour la difficulté et **5** pour le nombre max de personnages dans une équipe.
-
-Pour lancer l'application cependant, il faut lancer le projet depuis un terminal dans lequel vous pouvez répondre et donner
-les valeurs que vous souhaitez.
+Les tests sont fait avec JUnit 5.
 
 ---
 
-## Compilation et Utilisation (A MODIFIER)
+## Compilation et Utilisation 
+
+### Récupération du projet
+
+Dans le dossier de votre choix sur votre machine, assurez vous d'avoir installé la librairie Java JDK version 21 (LTS)
+Dans le dossier de votre choix sur votre machine, clonez ce dépôt git.
+Déplacez vous dans le dossier du dépôt git sur votre machine.
+
+### Compilation et Execution du projet
+
+Entrez l'une après l'autre les deux commandes suivantes :
+```
+"chemin/Vers/Dossier/jdk"/jdk-21.0.4+7/bin/javac -d bin $(find src -name "*.java")
+
+"chemin/Vers/Dossier/jdk"/jdk-21.0.4+7bin/java -cp bin:src/main/resources/ eu.telecomnancy.rpg.App.GameClient
+```
+Remplacez "chemin/Vers/Dossier/jdk"/jdk-21.0.4+7 par le chemin vers le Java JDK que vous avez installé.
+
+### Conseils d'utilisation :
+
+Lisez bien ce qui s'affiche à l'écran dès le début et après chaque utilisation d'une commande.
+
+Pour connaitre le fonctionnement du jeu, tapez les commandes suivantes :
+help --> Vous affichera le manuel complet du jeu
+commandSummary --> Vous affichera un résumé des commandes possibles dans le jeu. Lire le manuel est cependant recommandé.
+
+Vous pouvez aller voir le fichier texte [CommandExamples](Documentation/commandExamples) pour mieux comprendre et avoir des commandes toutes faites pour tester le jeu.
+
