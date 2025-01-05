@@ -121,7 +121,7 @@ Les tests unitaires sont organisés pour valider le comportement des différente
 - Les fonctionnalités associées aux Design Patterns (ex : création d’objets avec le Factory Method, notification avec le pattern Observer).
 
 ### Structure des tests
-Les tests unitaires sont situés dans le répertoire [test](src/test) et sont structurés comme suit :
+Les tests unitaires sont situés dans le répertoire [test](test) et sont structurés comme suit :
     - Un ou plusieurs fichiers de tests pour chaque design pattern
     - Un fichier de tests AllTests.java qui démarre les tous les autres tests
 

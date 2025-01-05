@@ -1,0 +1,276 @@
+[33m# Game Command Manual[0m
+
+[33m## Table of Contents[0m
+1. Introduction
+2. General Rules
+3. Utilities
+   - Undo
+   - Clear
+   - Display Command Summary
+   - Help
+   - Previous Command
+   - Exit
+4. Settings Management
+   - Show Settings
+   - Change Settings
+5. Team Management
+   - Create a New Team
+   - Remove an Existing Team
+   - Print an Existing Team
+   - Change the Name of an Existing Team
+   - Change the Name of a Character in an Existing Team
+6. Combat Actions
+   - Attack
+   - Buff a Character or a Team
+   - Heal a Character or a Team
+   - Equip a Character with a custom Armor
+   - Make a Character Invincible
+   - Unequip the Armor of a Character
+   - Remove the Invincibility of a Character
+   - Change the Combat Strategy of a Character
+
+---
+
+[33m## 1. Introduction[0m
+This manual describes the available commands to manage your teams and perform actions in the game.
+You can also use the "CommandExamples.txt" file to see examples of use of this game.
+
+[33m## 2. General Rules[0m
+- All commands must be entered following the specified syntax.
+- Compound names must always be placed between [33m**double quotes**[0m (e.g., "Compound Name").
+- Commands are case-insensitive (e.g. createTeam or CREATETEAM or createteam work)
+- Some commands can be undone using 'Undo'.
+    While you may attempt to undo any command listed in this manual, certain actions may return an error message if they cannot be reversed.
+
+---
+
+[33m## 3. Utilities[0m
+
+[33m### Undo[0m
+```
+undo
+```
+Reverses the last performed action if it is reversible and displays a message if it's not.
+
+[33m### Clear[0m
+```
+clear
+```
+Clears the prompt.
+
+[33m### Display Command Summary[0m
+```
+commandsSummary
+```
+Displays a summary table of available commands with their syntax and description.
+
+[33m### Help[0m
+```
+help
+```
+Displays this manual.
+
+[33m### Previous command[0m
+```
+prev
+```
+Launches again the previous command.
+
+[33m### Exit[0m
+```
+exit
+```
+Exit the game.
+
+---
+
+[33m## 4. Settings Management[0m
+
+[33m### Show Current Settings Configuration[0m
+```
+showSettings
+```
+
+Show the current settings configuration.
+
+[33m### Change the Current Settings Configuration[0m
+```
+changeSettings <difficultyLevel> <sizeOfATeam>
+```
+
+Modifies the current settings configuration.
+You can give a difficulty level between 1 and 3 and a size of a team between 1 and 10.
+
+---
+
+[33m## 5. Team Management[0m
+
+[33m### Create a New Team[0m
+```
+- [4mCustom team :[0m createTeam "<team_name>" "custom" <character_name_1> <character_type_1> <character_name_2> <character_type_2> ...
+
+- [4mBalanced team :[0m createTeam "<team_name>" "Balanced"
+- [4mWarrior team :[0m createTeam "<team_name>" "Warrior"
+- [4mWizard team :[0m createTeam "<team_name>" "Wizard"
+```
+
+Creates and saves a new team of characters.
+The number of players in the team must be less than or equal to the maximum number of players allowed in a team.
+Default maximum players: 10 (configurable in Game Configuration).
+The chosen names for your player should not be used twice in the same team.
+
+    [1mBasic teams are:[0m
+    - Balanced: 1 Warrior, 1 Wizard, 1 Healer
+    - Warrior: 3 Warriors
+    - Wizard: 3 Wizards
+
+    [1mValid character types are:[0m
+        - Warrior
+        - Healer
+        - Wizard
+
+    [1mExamples:[0m
+          Example 1: Custom team creation
+    createTeam Rocket warrior1 Warrior Healer1 Healer wizard1 Wizard
+
+          Example 2: Custom team with multi-word names
+    createTeam "Super Team" "first warrior" Warrior "first Healer" Healer "first Wizard" Wizard
+
+          Example 3: Basic "Wizard" team
+    createTeam "Wizard Team" Wizard
+
+
+[33m### Remove an Existing Team[0m
+```
+deleteTeam "<team_name>"
+```
+
+Removes an existing team of characters.
+
+    [1m**Notes:**[0m
+    A deleted team is gone forever, you can't undo this action, and you will not be able to retrieve this team later.
+
+[33m### Print an Existing Team[0m
+```
+printTeam "<team_name>"
+```
+
+Prints the name and all the characters of an existing team of characters
+
+[33m### Change the Name of an Existing Team[0m
+```
+changeTeamName "<team_name>" "<new_team_name>"
+```
+
+Changes the name of an existing team of characters
+
+[33m### Change the Name of a Character in an Existing Team[0m
+```
+changeCharacterName "<team_name>" "<character_name>" "<new_character_name>"
+```
+
+Changes the name of a character from an existing team of characters
+
+---
+
+[33m## 5. Combat Actions[0m
+
+[33m### Attack[0m
+```
+attack "<attacker_team_name>" "<attacker_name>" "<defender_team_name>" "defender_name" <damage_amount>
+```
+
+Performs an attack on a target, dealing damage. **Armors are taken into account during damage calculation**.
+The damage amount should be a positve integer.
+
+[34m[4mCurrently, this command is a prototype[0m[34m you need to give the damage amount you want to deal in this attack as the attributes of a character are not fully used currently
+and the initial damages of an attack are not computed automatically, only armors are taken into account.[0m
+
+    [1mExample:[0m
+    attack "First Team" "Strong Warrior" "Second Team" "Smart Wizard" 60
+    will organise the attack of Strong Warrior from First Team on Smart Wizard from Second Team using 60 as a base to calculate the real damages dealt according to strategies and armors.
+
+[33m### Buff a Character or a Team[0m
+```
+buffCharacter "<team_name>" "<character_name>" <buff_amount>
+```
+
+Applies a buff to a player. It modifies the personal attribute of the character.
+
+```
+buffTeam "<team_name>" <buff_amount>
+```
+
+Applies a buff to all players in a team. It modifies the personal attribute of each character.
+
+[34m[4mCurrently, this command is a prototype[0m[34m and has no effect in the game. It can be applied without limit.
+
+[33m### Heal a Character or a Team[0m
+```
+healCharacter "<team_name>" "<character_name>" <heal_amount>
+```
+
+Heals a player by increasing their health.
+
+```
+healTeam "<team_name>" <heal_amount>
+```
+
+Heals all players in a team by increasing their health.
+
+[34m[4mCurrently, this command is a prototype[0m[34m and can be applied without limit, even to a deceased character.
+
+    [33m**Note:**[0m
+    - "Healing actions cannot be undone via 'UNDO'. To counteract healing, you can attack the healed team."
+
+[33m### Equip a Character with a custom Armor[0m
+```
+equipArmor "<team_name>" "<character_name>" <armor_Amount>
+```
+
+Equips a character from an existing team of characters with an armor with a custom armor amount.
+The <armor_amount> should be an integer between 1 and 80. It represents a reduction of the damage received by <armor_amount>%.
+If a character equipped with armor receives damage, the armor will absorb the damage, and its <armor_amount> will be reduced.
+An armor can be removed by using the removeArmor command or with "Undo".
+You cannot equip a character who is invincible.
+
+[33m### Make a Character Invincible[0m
+```
+makeInvincible "<team_name>" "<character_name>"
+```
+
+Makes a character invincible until its invincibility is removed.
+An invincible character will not receive any damage as long as it is invincible.
+Invincibility can be removed using the removeInvincibility command or using "Undo".
+You cannot add invincibility on an already invincible character.
+
+[33m### Unequip the Armor of a Character[0m
+```
+removeArmor "<team_name>" "<character_name>"
+```
+
+Unequips the most recently worn armor of a character who has at least one equipped armor.
+Any unequipped armor is permanently lost and cannot be restored using "UNDO." To re-equip the character, a new armor must be created.
+
+[33m### Remove the Invincibility of a Character[0m
+```
+removeInvincibility "<team_name>" "<character_name>"
+```
+
+Removes invincibility from an invincible character.
+
+[33m### Change the Combat Strategy of a Character[0m
+```
+changeStrategy "<team_name>" "<character_name>" "<strategy_name>"
+```
+
+Modifies the combat strategy of a character from an existing team of characters.
+
+    [1mValid Combat Strategy Names and Their Associated Buffs:[0m
+
+         [3m- Neutral:[0m don't change anything
+         [3m- Aggressive:[0m the character will deal 30% more damage but will also take 30% more damage.
+         [3m- Defensive:[0m the character will receive 20% less damage but will also deal 20% less damage.
+         [3m- Berserker:[0m the character will deal 50% more damage but will also receive 50% more damage.
+         [3m- Stone Golem:[0m the character will receive 60% less damage but will also deal 60% less damage.
+

@@ -47,7 +47,7 @@ class CharacterDecoratorTest {
         character.setHealth(100);
 
         // Apply armor with a 50% reduction
-        ArmoredDecorator armoredCharacter = new ArmoredDecorator(character, 0.5);
+        ArmoredDecorator armoredCharacter = new ArmoredDecorator(character, 50);
 
         // Test health remains the same when armor is applied
         assertEquals(100, armoredCharacter.getHealth(), "Health should remain unchanged when decorating");
@@ -57,7 +57,7 @@ class CharacterDecoratorTest {
         assertEquals(25, reducedDamage, "Damage should be reduced by 50% (50 * (1 - 0.5))");
 
         // Test changing the armor factor
-        armoredCharacter.setArmorFactor(0.8); // 80% reduction
+        armoredCharacter.setArmorFactor(80); // 80% reduction
         reducedDamage = armoredCharacter.calculateTakeDamage(50);
         assertEquals(10, reducedDamage, "Damage should be reduced by 80% (50 * (1 - 0.8))");
 

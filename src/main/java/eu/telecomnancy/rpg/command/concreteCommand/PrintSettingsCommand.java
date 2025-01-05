@@ -1,19 +1,16 @@
 package eu.telecomnancy.rpg.command.concreteCommand;
 
 import eu.telecomnancy.rpg.App.GameFacade;
+import eu.telecomnancy.rpg.GameConfiguration;
 import eu.telecomnancy.rpg.command.Command;
 import eu.telecomnancy.rpg.command.CommandParameters;
 
-public class ChangeTeamNameCommand implements Command {
-    String history = null;
+public class PrintSettingsCommand implements Command {
 
     @Override
     public void execute(GameFacade gameFacade, CommandParameters parameters) {
-        String team = parameters.getString("team");
-        String newName = parameters.getString("newName");
-
-        history = "The team '" + team + "' changed its name to '" + newName + "'.";
-        gameFacade.renameTeam(team, newName);
+        GameConfiguration gameConfiguration = GameConfiguration.getGameConfiguration();
+        System.out.println(gameConfiguration.toString());
     }
 
     @Override
@@ -23,6 +20,6 @@ public class ChangeTeamNameCommand implements Command {
 
     @Override
     public String toString() {
-        return history;
+        return "Settings printed.";
     }
 }

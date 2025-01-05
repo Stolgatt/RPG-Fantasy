@@ -14,9 +14,9 @@ public class AddTeamCommand implements Command {
     List<String> basicTeam = new ArrayList<>();
 
     public AddTeamCommand() {
-        basicTeam.add("Balanced");
-        basicTeam.add("Warrior");
-        basicTeam.add("Wizard");
+        basicTeam.add("BALANCED");
+        basicTeam.add("WARRIOR");
+        basicTeam.add("WIZARD");
     }
 
     @Override
@@ -25,7 +25,7 @@ public class AddTeamCommand implements Command {
         String type = parameters.getString("type");
 
         // Basic team
-        if (basicTeam.contains(type)) {
+        if (basicTeam.contains(type.toUpperCase())) {
             history = "Add team : " + team + " of type " + type;
             gameFacade.addTeam(team, type, null);
         }

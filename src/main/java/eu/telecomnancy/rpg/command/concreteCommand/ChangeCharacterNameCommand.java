@@ -19,7 +19,7 @@ public class ChangeCharacterNameCommand implements Command {
 
     @Override
     public void undo(GameFacade gameFacade, CommandParameters parameters) {
-
+        // do nothing
     }
 
     @Override

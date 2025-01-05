@@ -84,10 +84,10 @@ public class GameFacade {
      * @param type The type of the team (e.g., "Warrior", "Wizard", "Balanced").
      */
     public void addTeam(String name, String type, List<Pair<String, String>> customCharacters) {
-        switch (type) {
-            case "Warrior" -> teams.put(name, teamBank.createClone("Combat"));
-            case "Wizard" -> teams.put(name, teamBank.createClone("Magic"));
-            case "Balanced" -> teams.put(name, teamBank.createClone("Balanced"));
+        switch (type.toUpperCase()) {
+            case "WARRIOR" -> teams.put(name, teamBank.createClone("Combat"));
+            case "WIZARD" -> teams.put(name, teamBank.createClone("Magic"));
+            case "BALANCED" -> teams.put(name, teamBank.createClone("Balanced"));
             default -> teams.put(name, createTeam(name, customCharacters));
         }
     }

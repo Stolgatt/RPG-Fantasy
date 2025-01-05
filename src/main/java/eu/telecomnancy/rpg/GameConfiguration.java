@@ -81,4 +81,9 @@ public class GameConfiguration {
     public int getMaxDifficulty() {
         return this.maxDifficulty;
     }
+
+    public String toString(){
+        return ("Current difficulty: " + getDifficulty() + " (between " + getMinDifficulty() + " and " + getMaxDifficulty() + ")" +
+                " ; current size of a team: " + getMaxSizeTeam() + " (between 1 and " + getMaxSizeTeamAllowed()) + ")";
+    }
 }

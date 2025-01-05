@@ -1,0 +1,28 @@
+Command                     | Syntax                                                            | Description
+--------------------------------------------------------------------------------------------------------------
+Undo                        | undo                                                              | Reverses the last performed action if reversible.
+Clear                       | clear                                                             | Clears the prompt.
+Display Command Summary     | commandsSummary                                                   | Displays a summary table of all commands.
+Help                        | help                                                              | Displays the command manual.
+Previous Command            | Prev                                                              | Launches the previous command again.
+Exit                        | Exit                                                              | Exits the game.
+Show Settings               | showSettings                                                      | Displays the current settings configuration.
+Change Settings             | changeSettings <difficultyLevel> <sizeOfATeam>                    | Modifies the difficulty level and team size.
+Create a New Team           | createTeam "<team_name>" custom <name_1> <type_1> ...           | Creates a new team of characters.
+                            | createTeam "<team_name>" Balanced                                | Creates a balanced team.
+                            | createTeam "<team_name>" Warrior                                 | Creates a warrior team.
+                            | createTeam "<team_name>" Wizard                                  | Creates a wizard team.
+Remove a Team               | deleteTeam "<team_name>"                                           | Deletes an existing team permanently.
+Print a Team                | printTeam "<team_name>"                                            | Displays the characters in a team.
+Change Team Name            | changeTeamName "<team_name>" "<new_team_name>"                     | Renames a team.
+Change Character Name       | changeCharacterName "<team_name>" "<character_name>" "<new_name>"  | Renames a character.
+Attack                      | attack "<attacker_team>" "<attacker>" "<defender_team>" "<defender>" <damage> | Performs an attack.
+Buff Character              | buffCharacter "<team_name>" "<character_name>" <buff_amount>       | Buffs a single character.
+Buff Team                   | buffTeam "<team_name>" <buff_amount>                               | Buffs all characters in a team.
+Heal Character              | healCharacter "<team_name>" "<character_name>" <heal_amount>       | Heals a single character.
+Heal Team                   | healTeam "<team_name>" <heal_amount>                               | Heals all characters in a team.
+Equip Armor                 | equipArmor "<team_name>" "<character_name>" <armor_amount>         | Equips a character with armor.
+Make Invincible             | makeInvincible "<team_name>" "<character_name>"                    | Makes a character invincible.
+Remove Armor                | removeArmor "<team_name>" "<character_name>"                       | Removes a character's armor.
+Remove Invincibility        | removeInvincibility "<team_name>" "<character_name>"               | Removes a character's invincibility.
+Change Strategy             | changeStrategy "<team_name>" "<character_name>" "<strategy_name>"  | Changes a character's combat strategy.

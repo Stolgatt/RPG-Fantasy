@@ -1,0 +1,19 @@
+createTeam "Communautée de l'anneau" custom Aragorn Warrior "Gandalf the Grey" Wizard Frodon Healer "Master Gimli" Warrior
+
+printTeam "Communautée de l'anneau"
+
+deleteTeam "Communautée de l'anneau"
+
+createTeam Rocket Balanced
+
+createTeam Ninjas Warrior
+
+printTeam Rocket
+
+printTeam Ninjas
+
+changeTeamName "Communautée de l'anneau" "Heroes of the middle earth"
+
+changeCharacterName Aragorn "King Aragorn"
+
+attack Rocket "Strong Warrior" "Communautée de l'anneau" "Gandalf the Grey" 60
