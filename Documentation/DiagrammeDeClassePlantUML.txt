@@ -3,7 +3,7 @@
 
 class GameConfiguration <<Singleton>>
 
-class GameFacade <<Access Point>>
+class GameFacade <<Access Point To Game Logic>>
 
 class CharacterRegistry
 
@@ -28,6 +28,11 @@ interface CombatStrategy {
 }
 
 interface CharacterInterface {
+}
+
+interface Command {
+ + void execute(GameFacade, CommandParameters);
+ + void undo(GameFacade, CommandParameters);
 }
 
 abstract class GameCharacter implements CharacterInterface, Visitable, Prototype, Observable {
@@ -98,6 +103,32 @@ class BerserkerStrategy implements CombatStrategy
 
 class AggressiveStrategy implements CombatStrategy
 
+class UndoneCommand implements Command{
+  - Command undoneCommand
+}
+
+
+class ConcreteCommand implements Command {
+  <<All Concrete Commands >>
+}
+
+class GameInvoker {
+  - final GameFacade gameFacade;
+  - final Stack<CommandEntry> commandHistory;
+  - final Stack<Command> actionHistory;
+  - final Queue<CommandEntry> awaitingCommands;
+
+  + void executeCommand(Command, CommandParameters);
+  + void undoLastCommand();
+  + void printActionHistory();
+}
+
+class CommandParameters
+
+class GameClient <<User Interface>>
+
+
+
 
 Observable "0..2" -- "1" Observer : observe
 Visitable "0..*" -- "1" Visitor : accept
@@ -107,6 +138,12 @@ TeamRegistry -- TeamDirector : can use
 TeamDirector -- TeamBuilder : uses
 TeamBuilder -- Team : creates
 GameCharacter "1" -- "1" CombatStrategy : chooses
+Command -- CommandParameters
+GameClient "0..*"-- "1" Command : creates and uses
+GameClient "1" -- "1" GameFacade : creates and uses
+GameClient "1" -- "1" GameInvoker : creates and uses
+GameClient "1" -- "1" GameConfiguration: configures
+
 
 
 @enduml

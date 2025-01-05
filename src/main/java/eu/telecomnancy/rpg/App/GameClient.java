@@ -52,6 +52,10 @@ public class GameClient {
                     // Undo the previous command
                     invoker.undoLastCommand();
                     break;
+                case "PRINTHISTORY":
+                    // Print the command history
+                    invoker.printActionHistory();
+                    break;
                 // Game Commands
                 case "CREATETEAM":
                     // Handle the createTeam command
@@ -88,6 +92,14 @@ public class GameClient {
                 case "BUFFCHARACTER":
                     // Buff a character in a team
                     handleBuffCharacter(input, invoker, cp);
+                    break;
+                case "HEALTEAM":
+                    // Heals a team
+                    handleHealTeam(input, invoker, cp);
+                    break;
+                case "HEALCHARACTER":
+                    // Heals a character
+                    handleHealCharacter(input, invoker, cp);
                     break;
                 case "EQUIPARMOR":
                     // Equip a character with an armor

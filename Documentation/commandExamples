@@ -1,0 +1,148 @@
+# **Game Command Examples**
+
+## **Team Management Examples**
+
+### **Create a Custom Team**
+```
+createTeam "Fellowship of the Ring" custom Aragorn Warrior "Gandalf the Grey" Wizard Frodo Healer "Master Gimli" Warrior
+```
+
+### **Delete an Existing Team**
+```
+deleteTeam "Fellowship of the Ring"
+```
+
+### **Create a Balanced Team**
+```
+createTeam Rocket Balanced
+```
+
+### **Create a Warrior Team**
+```
+createTeam Ninjas Warrior
+```
+
+### **Create a Wizard Team**
+```
+createTeam sorcerers Wizard
+```
+
+### **Display Existing Teams**
+```
+printTeam Rocket
+printTeam Ninjas
+printTeam "Fellowship of the Ring"
+```
+
+### **Rename a Team**
+```
+changeTeamName "Fellowship of the Ring" "Heroes of the Middle Earth"
+```
+
+### **Rename a Character**
+```
+changeCharacterName "Heroes of the Middle Earth" Aragorn "King Aragorn"
+```
+
+---
+
+## **Combat Actions Examples**
+
+### **Attack a Character**
+```
+attack Rocket "Strong Warrior" "Heroes of the Middle Earth" "Gandalf the Grey" 60
+```
+
+### **Buff a Character**
+```
+buffCharacter "Rocket" "Strong Warrior" 10
+```
+
+### **Buff an Entire Team**
+```
+buffTeam "Rocket" 15
+```
+
+### **Heal a Character**
+```
+healCharacter "Heroes of the Middle Earth" "Frodo" 20
+```
+
+### **Heal an Entire Team**
+```
+healTeam "Heroes of the Middle Earth" 25
+```
+
+### **Equip a Character with Armor**
+```
+equipArmor "Heroes of the Middle Earth" "King Aragorn" 50
+```
+
+### **Make a Character Invincible**
+```
+makeInvincible "Heroes of the Middle Earth" "Gandalf the Grey"
+```
+
+### **Remove Armor from a Character**
+```
+removeArmor "Heroes of the Middle Earth" "King Aragorn"
+```
+
+### **Remove Invincibility from a Character**
+```
+removeInvincibility "Heroes of the Middle Earth" "Gandalf the Grey"
+```
+
+### **Change a Character's Combat Strategy**
+```
+changeStrategy "Heroes of the Middle Earth" "King Aragorn" Aggressive
+```
+
+---
+
+## **Utilities Examples**
+
+### **Undo the Last Action**
+```
+undo
+```
+
+### **Clear the Console**
+```
+clear
+```
+
+### **Display Command Summary**
+```
+commandsSummary
+```
+
+### **Display Help**
+```
+help
+```
+
+### **Repeat the Last Command**
+```
+prev
+```
+
+### **Exit the Game**
+```
+exit
+```
+
+---
+
+## **Settings Management Examples**
+
+### **Display Current Configuration**
+```
+showSettings
+```
+
+### **Modify Configuration Settings**
+```
+changeSettings 2 8
+```
+

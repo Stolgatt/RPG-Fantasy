@@ -9,6 +9,7 @@
    - Display Command Summary
    - Help
    - Previous Command
+   - Print Command History
    - Exit
 4. Settings Management
    - Show Settings
@@ -74,7 +75,13 @@ Displays this manual.
 ```
 prev
 ```
-Launches again the previous command.
+Prints the previous command.
+
+[33m### Print Command History[0m
+```
+printHistory
+```
+Prints the Command History.
 
 [33m### Exit[0m
 ```

@@ -6,6 +6,7 @@ Display Command Summary     | commandsSummary                                   
 Help                        | help                                                              | Displays the command manual.
 Previous Command            | Prev                                                              | Launches the previous command again.
 Exit                        | Exit                                                              | Exits the game.
+Print Command History       | printHistory                                                      | Prints the Command History of the game session.
 Show Settings               | showSettings                                                      | Displays the current settings configuration.
 Change Settings             | changeSettings <difficultyLevel> <sizeOfATeam>                    | Modifies the difficulty level and team size.
 Create a New Team           | createTeam "<team_name>" custom <name_1> <type_1> ...           | Creates a new team of characters.
