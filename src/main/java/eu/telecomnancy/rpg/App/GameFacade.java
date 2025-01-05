@@ -14,7 +14,6 @@ import eu.telecomnancy.rpg.GameConfiguration;
 import eu.telecomnancy.rpg.characters.visitors.BuffVisitor;
 import eu.telecomnancy.rpg.characters.visitors.DamageVisitor;
 import eu.telecomnancy.rpg.characters.visitors.HealVisitor;
-import javafx.util.Pair;
 
 import java.util.HashMap;
 import java.util.List;
@@ -82,8 +81,9 @@ public class GameFacade {
      *
      * @param name The name of the team.
      * @param type The type of the team (e.g., "Warrior", "Wizard", "Balanced").
+     * @param customCharacters The list of character with their name and type
      */
-    public void addTeam(String name, String type, List<Pair<String, String>> customCharacters) {
+    public void addTeam(String name, String type, List<Map.Entry<String, String>> customCharacters) {
         switch (type.toUpperCase()) {
             case "WARRIOR" -> teams.put(name, teamBank.createClone("Combat"));
             case "WIZARD" -> teams.put(name, teamBank.createClone("Magic"));
@@ -92,25 +92,24 @@ public class GameFacade {
         }
     }
 
+
     /**
      * Creates a custom team based on user input for each character's name and type.
      *
      * @param name The name of the team.
      * @return The created Team object.
      */
-    public Team createTeam(String name, List<Pair<String, String>> customCharacters) {
+    public Team createTeam(String name, List<Map.Entry<String, String>> customCharacters) {
         GameConfiguration config = GameConfiguration.getGameConfiguration();
         int maxSize = config.getMaxSizeTeam();
 
         TeamBuilder teamBuilder = new TeamBuilder(name);
 
-        // Parcours des personnages fournis dans customCharacters
         for (int i = 0; i < customCharacters.size() && i < maxSize; i++) {
-            Pair<String, String> characterInfo = customCharacters.get(i);
+            Map.Entry<String, String> characterInfo = customCharacters.get(i);
             String playerName = characterInfo.getKey();    // Character's name
             String playerType = characterInfo.getValue();  // Character's type
 
-            // Crée le personnage en fonction du type
             GameCharacter character = switch (playerType.toUpperCase()) {
                 case "WIZARD" -> {
                     GameCharacter wizard = characterBank.createClone("Wizard");
@@ -134,13 +133,12 @@ public class GameFacade {
                     yield defaultWarrior;
                 }
             };
-
-            // Ajoute le personnage à l'équipe
             teamBuilder.addPlayer(character);
         }
-        // Construit et retourne l'équipe
+
         return teamBuilder.build();
     }
+
 
 
     /**

@@ -4,10 +4,11 @@ import eu.telecomnancy.rpg.App.GameFacade;
 import eu.telecomnancy.rpg.GameConfiguration;
 import eu.telecomnancy.rpg.command.Command;
 import eu.telecomnancy.rpg.command.CommandParameters;
-import javafx.util.Pair;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class AddTeamCommand implements Command {
     String history = null;
@@ -35,19 +36,20 @@ public class AddTeamCommand implements Command {
             GameConfiguration gameConfiguration = GameConfiguration.getGameConfiguration();
             int maxSize = gameConfiguration.getMaxSizeTeam();
 
-            List<Pair<String, String>> customCharacters = new ArrayList<>();
+            List<Map.Entry<String, String>> customCharacters = new ArrayList<>();
 
             for (int i = 1; i <= maxSize; i++) {
                 String charName = parameters.getString("name" + i);
                 String charType = parameters.getString("type" + i);
 
                 if (charName != null && !charName.isEmpty() && charType != null && !charType.isEmpty()) {
-                    customCharacters.add(new Pair<>(charName, charType));
+                    customCharacters.add(new AbstractMap.SimpleEntry<>(charName, charType));
                 }
             }
             gameFacade.addTeam(team, "custom", customCharacters);
         }
     }
+
 
 
     @Override
