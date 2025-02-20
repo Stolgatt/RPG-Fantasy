@@ -142,7 +142,7 @@ Entrez l'une après l'autre les deux commandes suivantes :
 ```
 "chemin/Vers/Dossier/jdk"/jdk-21.0.4+7/bin/javac -d bin $(find src -name "*.java")
 
-"chemin/Vers/Dossier/jdk"/jdk-21.0.4+7bin/java -cp bin:src/main/resources/ eu.telecomnancy.rpg.App.GameClient
+"chemin/Vers/Dossier/jdk"/jdk-21.0.4+7/bin/java -cp bin:src/main/resources/ eu.telecomnancy.rpg.App.GameClient
 ```
 Remplacez "chemin/Vers/Dossier/jdk"/jdk-21.0.4+7 par le chemin vers le Java JDK que vous avez installé.
 
