@@ -2,22 +2,29 @@
 
 ## Table des matières
 1. [Introduction](#introduction)
-2. [Objectifs pédagogiques](#objectifs-pédagogiques)
-3. [Description du projet](#description-du-projet)
-4. [Architecture et Design Patterns](#architecture-et-design-patterns)
+2. [Illustration](#illustration)
+3. [Objectifs pédagogiques](#objectifs-pédagogiques)
+4. [Description du projet](#description-du-projet)
+5. [Architecture et Design Patterns](#architecture-et-design-patterns)
    - [Patterns utilisés](#patterns-utilisés)
    - [Diagrammes UML](#diagrammes-uml)
-5. [Code source](#code-source)
-6. [Tests unitaires](#tests-unitaires)
+6. [Code source](#code-source)
+7. [Tests unitaires](#tests-unitaires)
    - [Organisation des tests](#organisation-des-tests)
    - [Structure des tests](#structure-des-tests)
-7. [Compilation et Utilisation](#compilation-et-utilisation)
+8. [Compilation et Utilisation](#compilation-et-utilisation)
 
 
 ---
 
 ## Introduction
 L'objectif de ce projet est de développer un prototype de jeu de rôle (RPG) dans le cadre du module de **Méthodes et Outils de Conception Informatique (MOCI)**. Le projet se concentre sur l’application et la mise en oeuvre de divers **design patterns**, tout en fournissant un code propre, maintenable et bien documenté.
+
+---
+
+## Illustration
+
+<img src="assets/rpg_1.png" width="800" alt="Illustration d'un terminal avec le jeu lancé et une équipe créée">
 
 ---
 
